@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 2027 Reading Habit Challenge</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Six weeks, small group, January 2027. Read every day, finish the books you bought, and remember what you read.">
+<meta property="og:title" content="The 2027 Reading Habit Challenge">
+<meta property="og:description" content="Six weeks, small group, January 2027. Read every day, finish the books you bought, and remember what you read.">
+<meta property="og:image" content="https://davidkirkpatrick95.github.io/reading-habit-challenge/clips/wall.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5EFE3; --paper2:#EDE4D3; --card:#FBF8F1; --ink:#1C1A16; --soft:#5E574B; --line:#D9CFBC;
+  --hot:#C8401C; --hot2:#A93414; --night:#191713;
+  --serif:'Fraunces',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+img,video{display:block;max-width:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+section + section{border-top:1px solid var(--line)}
+.kick{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:12px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:clamp(40px,9.4vw,68px);font-weight:700}
+h1 em,h2 em{font-style:italic;color:var(--hot);font-weight:500}
+h2{font-size:clamp(29px,6vw,40px);margin-bottom:22px}
+h3{font-size:22px;line-height:1.2}
+p + p{margin-top:14px}
+.lead{font-size:20px;color:var(--soft);margin-top:20px;max-width:34em}
+.btn{display:inline-block;background:var(--hot);color:#fff;font-weight:700;font-size:17px;text-decoration:none;padding:16px 30px;border-radius:999px;box-shadow:0 2px 0 var(--hot2);transition:transform .15s,background .15s}
+.btn:hover{background:var(--hot2);transform:translateY(-1px)}
+.tbd{background:#FFE9A8;border-bottom:1px dashed #9A7A00;padding:0 4px;border-radius:3px;font-size:.92em}
+
+/* hero */
+.hero{padding:56px 0 48px;border:0}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:34px 0 30px;border:1px solid var(--ink);border-radius:14px;overflow:hidden;background:var(--card)}
+.facts div{padding:14px 10px;text-align:center}
+.facts div + div{border-left:1px solid var(--line)}
+.facts b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1}
+.facts span{font-size:12.5px;color:var(--soft);letter-spacing:.04em}
+.faces-row{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:15px;color:var(--soft)}
+.faces-row .stack{display:flex}
+.faces-row img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid var(--paper);margin-left:-10px}
+.faces-row img:first-child{margin-left:0}
+
+/* proof */
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vid{background:var(--night);border-radius:16px;overflow:hidden;color:#fff}
+.vid video{width:100%;aspect-ratio:9/14;object-fit:cover;background:#000}
+.vid .cap{padding:14px 16px 18px}
+.vid .big{font-family:var(--serif);font-size:23px;line-height:1.12;font-weight:600}
+.vid .who{font-size:14px;opacity:.75;margin-top:6px;line-height:1.4}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.face{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.face img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 20%}
+.face div{padding:10px 12px 13px;font-size:14px;line-height:1.35;color:var(--soft)}
+.face b{display:block;color:var(--ink);font-size:15px}
+.texts{margin-top:16px;background:var(--night);color:#fff;border-radius:16px;padding:26px 22px}
+.texts h3{font-size:27px}
+.texts h3 em{color:#FF8A5C;font-style:normal}
+.texts .shots{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 14px}
+.texts .shots img{border-radius:10px;width:100%}
+.texts small{display:block;font-size:13.5px;line-height:1.5;opacity:.7}
+
+/* before after */
+.pairs{display:grid;gap:10px}
+.pair{display:grid;grid-template-columns:1fr 26px 1fr;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:16.5px;line-height:1.35}
+.pair span:first-child{color:var(--soft);text-decoration:line-through;text-decoration-color:#B9AE99}
+.pair i{font-style:normal;color:var(--hot);font-weight:700;text-align:center}
+.pair span:last-child{font-weight:600}
+
+/* steps */
+.steps{display:grid;gap:22px;counter-reset:s}
+.step{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--serif);font-size:52px;line-height:.9;font-weight:700;color:var(--hot)}
+.step p{color:var(--soft);margin-top:4px;font-size:17px}
+
+/* get */
+.get{list-style:none;padding:0;display:grid;gap:12px}
+.get li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 50px;position:relative}
+.get li::before{content:"✓";position:absolute;left:18px;top:15px;color:var(--hot);font-weight:700;font-size:19px}
+.get b{display:block}
+.get span{color:var(--soft);font-size:16.5px}
+.get .val{display:block;margin-top:8px;font-style:normal;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hot)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding:16px 18px;border:1px solid var(--ink);border-radius:12px;font-weight:600}
+.total b{font-family:var(--serif);font-size:28px}
+.call{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.call div{background:var(--paper2);border-radius:9px;padding:9px 10px;font-size:14px;line-height:1.3;color:var(--ink)}
+.call b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--hot);margin-bottom:2px}
+
+/* price */
+.price{background:var(--night);color:#fff;border-radius:20px;padding:34px 26px;text-align:center}
+.price .amt{font-family:var(--serif);font-size:74px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.price .per{opacity:.7;font-size:15.5px;margin-top:8px}
+.bf{margin-top:24px;background:#2A2620;border:1px dashed #FF8A5C;border-radius:14px;padding:18px 18px 20px;text-align:left}
+.bf b.tag{display:inline-block;background:#FF8A5C;color:#1C1A16;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+.bf h3{color:#fff;font-size:24px}
+.bf h3 em{color:#FF8A5C;font-style:normal}
+.bf p{font-size:15.5px;opacity:.8;margin-top:8px}
+.price .btn{margin-top:26px}
+
+/* ask */
+.ask{padding-left:22px;display:grid;gap:8px}
+.ask li::marker{color:var(--hot);font-weight:700}
+
+/* coach */
+.coach{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start}
+.coach img{width:150px;height:190px;object-fit:cover;border-radius:14px}
+.coach blockquote{font-family:var(--serif);font-size:21px;line-height:1.42;font-style:italic}
+.coach .sig{margin-top:14px;font-size:15px;color:var(--soft)}
+.coach .sig b{color:var(--ink)}
+
+/* faq */
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:19px 44px 19px 0;font-weight:600;font-size:18.5px;line-height:1.35;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:13px;font-family:var(--serif);font-size:30px;font-weight:400;color:var(--hot);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details .a{padding:0 0 22px;color:var(--soft);font-size:17px;max-width:36em}
+details .a ul{padding-left:20px;margin-top:6px}
+
+/* final */
+.final{text-align:center}
+.final p{color:var(--soft);max-width:28em;margin:0 auto 26px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(245,239,227,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:20}
+.sticky span{font-size:14px;line-height:1.3;color:var(--soft)}
+.sticky span b{color:var(--ink);display:block;font-size:15px}
+.sticky .btn{padding:12px 24px;font-size:16px;white-space:nowrap}
+.editbar{position:fixed;top:10px;right:10px;z-index:30;display:flex;gap:6px}
+.editbar button{font:600 12.5px var(--sans);background:#fff;border:1px solid var(--ink);border-radius:999px;padding:6px 12px;cursor:pointer}
+.editbar button.on{background:var(--ink);color:#fff}
+body.editing main [contenteditable]{outline:none}
+body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
+
+@media (max-width:560px){
+  body{font-size:17px}
+  section{padding:44px 0}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:nth-child(3){border-left:0}
+  .facts div:nth-child(n+3){border-top:1px solid var(--line)}
+  .vids{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 6px}
+  .vid{scroll-snap-align:center}
+  .grid{grid-template-columns:1fr 1fr}
+  .face:last-child:nth-child(odd){grid-column:1/-1;display:grid;grid-template-columns:42% 1fr;align-items:center}
+  .pair{grid-template-columns:1fr;gap:2px}
+  .pair i{display:none}
+  .call{grid-template-columns:1fr}
+  .coach{grid-template-columns:1fr}
+  .coach img{width:100%;height:220px;object-position:50% 30%}
+  .price .amt{font-size:62px}
+}
+</style>
+</head>
+<body>
+<div class="editbar"><button id="edit">Edit text</button><button id="reset" hidden>Undo my edits</button></div>
+
+<main id="doc">
+<div class="wrap">
+
+<section class="hero">
+  <div class="kick">6 weeks · January 2027 · for business owners</div>
+  <h1>The 2027 Reading Habit <em>Challenge</em></h1>
+  <p class="lead">You buy books and don't finish them. In six weeks you will read every day, finish at least one of them, and remember what you read.</p>
+  <div class="facts">
+    <div><b>6 weeks</b><span>starts January</span></div>
+    <div><b>2 calls</b><span>1-on-1 with David</span></div>
+    <div><b>10 seats</b><span>small group, on Zoom</span></div>
+    <div><b>1 to 8</b><span>books finished</span></div>
+  </div>
+  <a class="btn" href="#apply">Apply to join</a>
+  <div class="faces-row">
+    <div class="stack"><img src="img/ceo-8-figure.jpg" alt=""><img src="img/chrissy.jpg" alt=""><img src="img/kelvin.jpg" alt=""><img src="img/isabella.jpg" alt=""><img src="img/liam.jpg" alt=""></div>
+    <span>100+ CEOs, founders and companies trained</span>
+  </div>
+</section>
+
+<section>
+  <div class="kick">"Has this worked for people like me?"</div>
+  <h2>Yes. Hear it from them.</h2>
+  <div class="vids">
+    <div class="vid">
+      <video controls preload="none" playsinline poster="clips/josh-poster.jpg" src="clips/josh.mp4"></video>
+      <div class="cap"><div class="big">78 books in 2.5 years</div><div class="who"><b>Josh</b>, CEO of an eight-figure company. Before: a handful of books in his whole life.</div></div>
+    </div>
+    <div class="vid">
+      <video controls preload="none" playsinline poster="clips/chrissy-poster.jpg" src="clips/chrissy.mp4"></video>
+      <div class="cap"><div class="big">12 books in 6 weeks</div><div class="who"><b>Chrissy</b>, left her job to start her own business. She had stopped reading and switched to audiobooks.</div></div>
+    </div>
+  </div>
+
+  <div class="texts">
+    <div class="kick" style="color:#FF8A5C">I asked Josh: did reading improve the business?</div>
+    <h3>Revenue <em>+20%</em>. Profit <em>+400%</em>.</h3>
+    <div class="shots"><img src="img/real-1.png" alt="Josh's text messages, part 1"><img src="img/real-2.png" alt="Josh's text messages, part 2"></div>
+    <small>Obviously it wasn't only reading that contributed to their success, but it spearheaded the strategies and innovative ideas for their leadership team.</small>
+  </div>
+
+  <div class="grid">
+    <div class="face"><img src="img/kelvin.jpg" alt="Kelvin"><div><b>Kelvin</b>10 books in 6 weeks</div></div>
+    <div class="face"><img src="img/isabella.jpg" alt="Isabella"><div><b>Isabella</b>A book a week. Won a commercial project off one.</div></div>
+    <div class="face"><img src="img/jared.jpg" alt="Jared"><div><b>Jared</b>7 books in 7 weeks</div></div>
+    <div class="face"><img src="img/liam.jpg" alt="Liam"><div><b>Liam</b>12 books in 12 weeks</div></div>
+    <div class="face"><img src="img/romel.jpg" alt="Romel"><div><b>Romel</b>First books since high school</div></div>
+    <div class="face"><img src="img/dima.jpg" alt="Dima"><div><b>Dima</b>200 to 500+ words a minute</div></div>
+    <div class="face"><img src="img/marcos.jpg" alt="Marcos"><div><b>Marcos</b>"Six books in six weeks. I said you're crazy. I did it."</div></div>
+    <div class="face"><img src="img/chase.jpg" alt="Chase"><div><b>Chase</b>7 books in 6 weeks</div></div>
+    <div class="face"><img src="img/tristan.jpg" alt="Tristan"><div><b>Tristan</b>"Changed the revenue in my business"</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kick">What changes</div>
+  <h2>Six weeks from now</h2>
+  <div class="pairs">
+    <div class="pair"><span>Low motivation to read</span><i>→</i><span>You want to read</span></div>
+    <div class="pair"><span>Reading on and off</span><i>→</i><span>You read every day</span></div>
+    <div class="pair"><span>Buying books, never finishing them</span><i>→</i><span>1 to 8 books finished</span></div>
+    <div class="pair"><span>Reading a page and not taking it in</span><i>→</i><span>You understand it the first time</span></div>
+    <div class="pair"><span>Forgetting what you read</span><i>→</i><span>You remember more</span></div>
+    <div class="pair"><span>Falling asleep when you read</span><i>→</i><span>You love reading again</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="kick">How it works</div>
+  <h2>Three steps</h2>
+  <div class="steps">
+    <div class="step"><div><h3>We build your plan together</h3><p>A 60-minute 1-on-1 call with me. You leave with a book list for your business and a reading plan.</p></div></div>
+    <div class="step"><div><h3>We set your daily page goal</h3><p>One that fits your busy schedule.</p></div></div>
+    <div class="step"><div><h3>You join the group calls</h3><p>Two office hours a week for six weeks. Come to at least one.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kick">What you get</div>
+  <h2>Everything included</h2>
+  <ul class="get">
+    <li><b>Two 1-on-1 calls with me</b><span>Your reading coach, davidreadsfast. The first is your 60-minute plan call. The second comes after the program, to make sure your habit lasts for the rest of the year.</span><em class="val">$800 value</em></li>
+    <li><b>12 group office hours on Zoom</b><span>Two a week, one hour each. Leave early if you need to.</span>
+      <div class="call"><div><b>First 20 min</b>Your wins and improvements</div><div><b>Next 20 min</b>Live training: speed, memory, comprehension</div><div><b>Last 20 min</b>Open Q&amp;A</div></div><em class="val">$3,000 value</em></li>
+    <li><b>Phone and text accountability</b><span>From me, for all six weeks.</span><em class="val">$1,000 value</em></li>
+  </ul>
+  <div class="total"><span>Total value</span><b>$4,800</b></div>
+</section>
+
+<section id="price">
+  <div class="price">
+    <div class="kick" style="color:#FF8A5C">The investment</div>
+    <div class="amt">$2,000</div>
+    <div class="per">Six weeks. Everything above, valued at $4,800.</div>
+    <div class="bf">
+      <b class="tag">Black Friday</b>
+      <h3>Join as a group of three: <em>$800 each</em></h3>
+      <p>Sign up with two other people and each of you pays $800. Why: to help you lock in the habit before you get distracted. Ends November 23rd at 8pm CDT.</p>
+    </div>
+    <a class="btn" href="#apply">Apply to join</a>
+  </div>
+</section>
+
+<section>
+  <div class="kick">My guarantee</div>
+  <h2>Finish a book, or I keep coaching you</h2>
+  <p class="lead" style="margin-top:0;color:var(--ink)">If you read a minimum of 30 minutes a day, you attend at least one call a week and you do not finish at least one book, I will coach you until you do.</p>
+</section>
+
+<section>
+  <div class="kick">The commitment</div>
+  <h2>What I ask of you</h2>
+  <ol class="ask">
+    <li>Download the Read Maxxing app.</li>
+    <li>Read 30 to 60 minutes a day during the challenge.</li>
+    <li>Come to at least one office hour call a week.</li>
+  </ol>
+</section>
+
+<section>
+  <div class="kick">Who leads it</div>
+  <h2>A note from David</h2>
+  <div class="coach">
+    <img src="img/book-over-face.jpg" alt="David Kirkpatrick">
+    <div>
+      <blockquote>"It used to take me one hour to read 10 pages. Now I can do about 65. Once I became a better reader, so many things changed. I began to speak better, think more critically, have better ideas, and focus more sharply. If you think you will reach your full potential sooner with a consistent reading habit, let's have a conversation."</blockquote>
+      <div class="sig"><b>David Kirkpatrick</b>, davidreadsfast. Has studied the science of reading for three and a half years and helped thousands of people love reading and get better at it.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kick">Questions</div>
+  <h2>Before you apply</h2>
+  <details><summary>How much time does it take?</summary><div class="a">30 to 60 minutes of reading a day, and one group call a week. The calls are an hour, and you can leave early.</div></details>
+  <details><summary>When does it start, and when are the calls?</summary><div class="a">January 2027. There are 10 seats. Once the group is set, we pick the start date and call times that work for all members. Everything is on Zoom. If the seats are gone, the next challenge is in February.</div></details>
+  <details><summary>I've tried to build a reading habit before. Why would this work?</summary><div class="a">Before, you were on your own. This time you have a plan built for you, a page goal that fits your day, a coach who texts you, and a group that meets twice a week.</div></details>
+  <details><summary>I've switched to audiobooks. Is this for me?</summary><div class="a">Chrissy had stopped reading and switched to audiobooks. She finished 12 books in the six weeks.</div></details>
+  <details><summary>How many books will I finish?</summary><div class="a">Between one and eight. It depends on the daily page goal we set on your first call.</div></details>
+  <details><summary>What is the Read Maxxing app?</summary><div class="a">My reading app. It has games that train your brain to read better. It is not included in the price: it has a 7-day free trial, then costs $39.99 a year. On Android, we have a browser version for you.</div></details>
+  <details><summary>How does the Black Friday price work?</summary><div class="a">Three people sign up together and each pays $800 instead of $2,000. All three need to be signed up by November 23rd at 8pm CDT.</div></details>
+  <details><summary>Can I work with you privately instead?</summary><div class="a">Yes. Private 1-on-1 coaching starts at $5,000 for three months. Say so when you apply.</div></details>
+  <details><summary>Is there a guarantee?</summary><div class="a">Yes. If you read a minimum of 30 minutes a day, you attend at least one call a week and you do not finish at least one book, I will coach you until you do.</div></details>
+  <details><summary>How do I join?</summary><div class="a">Apply below. I read every application and reach out to you myself.</div></details>
+</section>
+
+<section class="final" id="apply">
+  <h2>Start 2027 as a <em>reader</em>.</h2>
+  <p>Apply, and I will reach out to you.</p>
+  <a class="btn" href="#apply">Apply to join</a>
+  <p style="margin-top:14px;font-size:14px"><span class="tbd">Apply link goes here</span></p>
+</section>
+
+</div>
+</main>
+
+<div class="sticky"><span><b>Reading Habit Challenge</b>January 2027 · 6 weeks</span><a class="btn" href="#apply">Apply</a></div>
+
+<script>
+// Edit mode: type straight on the page. Edits are kept in this browser only.
+const doc=document.getElementById('doc'),eb=document.getElementById('edit'),rb=document.getElementById('reset'),K='offer-page-edits-v1';
+const LOCAL=['127.0.0.1','localhost'].includes(location.hostname);
+if(!LOCAL){document.querySelector('.editbar').remove();document.querySelectorAll('.tbd').forEach(t=>(t.closest('p')||t).remove())}
+let saved=null;try{if(LOCAL)saved=localStorage.getItem(K)}catch(e){}
+if(saved){doc.innerHTML=saved;rb.hidden=false}
+eb.onclick=()=>{const on=!document.body.classList.contains('editing');document.body.classList.toggle('editing',on);doc.contentEditable=on;eb.classList.toggle('on',on);eb.textContent=on?'Done editing':'Edit text';
+  if(on){doc.querySelectorAll('details').forEach(d=>d.open=true)}else{try{localStorage.setItem(K,doc.innerHTML)}catch(e){};rb.hidden=false}};
+rb.onclick=()=>{try{localStorage.removeItem(K)}catch(e){};location.reload()};
+</script>
+</body>
+</html>
