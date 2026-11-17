@@ -46,7 +46,7 @@ p + p{margin-top:14px}
 .facts b{display:block;font-family:var(--serif);font-size:22px;line-height:1.1}
 .facts span{font-size:12.5px;color:var(--soft);letter-spacing:.04em}
 .faces-row{display:flex;align-items:center;gap:14px;margin-top:26px;font-size:15px;color:var(--soft)}
-.faces-row .stack{display:flex}
+.faces-row .fstack{display:flex}
 .faces-row img{width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:50% 22%;border:2px solid var(--paper);margin-left:-10px}
 .faces-row img:first-child{margin-left:0}
 
@@ -70,9 +70,9 @@ p + p{margin-top:14px}
 .texts small{display:block;font-size:13.5px;line-height:1.5;opacity:.7}
 
 /* flip book */
-.scene{position:relative;width:min(920px,100vw - 32px);margin-left:50%;transform:translateX(-50%);perspective:2000px;padding:34px 0 64px}
+.scene{cursor:default;position:relative;width:min(920px,100vw - 32px);margin-left:50%;transform:translateX(-50%);perspective:2000px;padding:34px 0 64px}
 .floaty{transform-style:preserve-3d}
-.book{--t:38px;position:relative;width:100%;aspect-ratio:4/3;transform-style:preserve-3d;transform-origin:50% 50%;transition:transform .8s cubic-bezier(.3,.1,.2,1)}
+.book{--t:74px;--to:30px;position:relative;width:100%;aspect-ratio:4/3;transform-style:preserve-3d;transform-origin:50% 50%;transition:transform .8s cubic-bezier(.3,.1,.2,1)}
 .book.closed{transform-origin:75% 50%}
 .leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,.1,.2,1)}
 .book.fast .leaf{transition-duration:.4s}
@@ -83,32 +83,62 @@ p + p{margin-top:14px}
 .book.closed::before{opacity:0}
 .pg.front{border-radius:3px 14px 14px 3px}
 .pg.back{transform:rotateY(180deg);border-radius:14px 3px 3px 14px}
-.pg.paper{background:linear-gradient(90deg,#E4D9C4 0,#FBF8F1 9%,#FBF8F1 100%);cursor:pointer}
+.pg.paper{background:linear-gradient(90deg,#D9C7A0 0,#F7EED8 9%,#F9F2DF 60%,#F3E7CB 100%);cursor:pointer}
 .pg.paper .in{padding:8cqw 7cqw 6cqw 10cqw}
 .pg.dark{background:#12110E}
 .pg.dark::after{content:"";position:absolute;inset:0 0 0 auto;width:9%;background:linear-gradient(270deg,rgba(0,0,0,.55),transparent);pointer-events:none}
-.pg.cover{background:#14120F;color:#F5EFE3;cursor:pointer;border-left:7px solid #0B0A08;box-shadow:inset 0 0 0 1px rgba(255,205,120,.45),inset 0 0 40px rgba(255,190,90,.12)}
+.pg.cover{color:#F3E3BC;cursor:pointer;border-left:3.4cqw solid #1E1007;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(120% 90% at 30% 15%,#6A3F20 0,#4A2A14 45%,#2B160A 100%);box-shadow:inset 0 0 0 1px #1A0D05,inset 0 0 60px rgba(0,0,0,.55)}
+.pg.cover::before{content:"";position:absolute;inset:2.6cqw 2.6cqw 2.6cqw 3.4cqw;border:1.5px solid #C99A45;border-radius:6px;box-shadow:inset 0 0 0 .9cqw rgba(0,0,0,0),inset 0 0 0 1cqw rgba(201,154,69,.55),0 0 12px rgba(255,200,100,.25);pointer-events:none;z-index:3}
+.pg.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 38%,rgba(255,226,160,.22) 48%,transparent 58%);background-size:260% 100%;animation:sheen 6.5s ease-in-out infinite;pointer-events:none;z-index:4}
+@keyframes sheen{0%,55%{background-position:120% 0}100%{background-position:-60% 0}}
 .pg.cover .in{padding:0}
-.collage{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:2px;padding:3cqw 3cqw 0}
-.collage img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:50% 18%;border-radius:2px;filter:saturate(.9) brightness(.92)}
-.cbot{padding:4.5cqw 6cqw 6cqw;background:linear-gradient(#14120F,#1F1811)}
-.cover .ck{font:700 3cqw var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#E9BF6A}
-.cover .ct{font:600 10.5cqw/1 var(--serif);letter-spacing:-.02em;margin-top:2.2cqw}
-.cover .ct em{color:#F0C672;font-weight:500;text-shadow:0 0 18px rgba(255,200,100,.45)}
-.cover .open{display:inline-block;margin-top:4cqw;font:700 3.8cqw var(--sans);background:linear-gradient(#F6D488,#E2AE4E);color:#191713;border-radius:999px;padding:2.4cqw 5.5cqw}
+.cover .corner{position:absolute;width:9cqw;height:9cqw;z-index:3;border:2px solid #D8AB55;pointer-events:none}
+.cover .corner.tl{left:4.6cqw;top:3.8cqw;border-right:0;border-bottom:0;border-radius:5cqw 0 0 0}
+.cover .corner.tr{right:3.8cqw;top:3.8cqw;border-left:0;border-bottom:0;border-radius:0 5cqw 0 0}
+.cover .corner.bl{left:4.6cqw;bottom:3.8cqw;border-right:0;border-top:0;border-radius:0 0 0 5cqw}
+.cover .corner.br{right:3.8cqw;bottom:3.8cqw;border-left:0;border-top:0;border-radius:0 0 5cqw 0}
+.collage{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:1.1cqw;padding:7cqw 6.5cqw 0 7.4cqw}
+.collage img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:50% 18%;border-radius:3px;border:1px solid #B88A3C;box-shadow:0 1px 3px rgba(0,0,0,.6);filter:sepia(.28) saturate(.9) brightness(.94)}
+.cbot{padding:4cqw 7cqw 8cqw 8cqw;text-align:center}
+.cover .ck{font:700 2.8cqw var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#D8AB55}
+.cover .ct{font:600 9.6cqw/1.02 var(--serif);letter-spacing:-.01em;margin-top:2cqw;background:linear-gradient(180deg,#FBE7AE,#D9A441 55%,#F3D083);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 0 10px rgba(255,200,100,.35))}
+.cover .ct em{font-weight:500}
+.cover .open{display:inline-block;margin-top:3.6cqw;font:700 4.6cqw var(--sans);background:linear-gradient(#F6D488,#D9A441);color:#2B160A;border-radius:999px;padding:3.4cqw 9cqw;box-shadow:0 2px 0 #8A6420,0 0 14px rgba(255,200,100,.4)}
 /* thickness of the closed book */
-.board,.edge{position:absolute;opacity:0;transition:opacity .35s;pointer-events:none}
-.book.closed .board,.book.closed .edge{opacity:1}
-.board{left:50%;top:0;width:50%;height:100%;background:#0E0D0B;border-radius:3px 14px 14px 3px;transform:translateZ(calc(var(--t) * -1))}
-.edge.er{left:calc(100% - 5px);top:1.2%;height:97.6%;width:var(--t);transform-origin:left center;transform:rotateY(90deg);background:repeating-linear-gradient(90deg,#F4ECD9 0 1.5px,#D8CBB0 1.5px 3px)}
-.edge.et{left:50.6%;top:5px;width:48.6%;height:var(--t);transform-origin:center top;transform:rotateX(-90deg);background:repeating-linear-gradient(0deg,#F4ECD9 0 1.5px,#D8CBB0 1.5px 3px)}
-.edge.eb{display:none}
+.board,.edge,.ribbon{position:absolute;opacity:0;transition:opacity .35s;pointer-events:none}
+.book.closed .board,.book.closed .edge,.book.closed .ribbon{opacity:1}
+.board{left:50%;top:0;width:50%;height:100%;background:#24120A;border-radius:3px 14px 14px 3px;transform:translateZ(calc(var(--t) * -1))}
+.edge.er{left:calc(100% - 7px);top:1.4%;height:97.2%;width:var(--t);transform-origin:left center;transform:rotateY(90deg);background:linear-gradient(180deg,rgba(90,60,20,.35),transparent 12%,transparent 88%,rgba(90,60,20,.4)),repeating-linear-gradient(90deg,#EFE0BC 0 1.5px,#C9B285 1.5px 2.5px,#E6D4AA 2.5px 4px,#B79E6E 4px 5px)}
+.edge.et{left:50.8%;top:7px;width:48.2%;height:var(--t);transform-origin:center top;transform:rotateX(-90deg);background:linear-gradient(90deg,rgba(90,60,20,.4),transparent 10%),repeating-linear-gradient(0deg,#EFE0BC 0 1.5px,#C9B285 1.5px 2.5px,#E6D4AA 2.5px 4px,#B79E6E 4px 5px)}
+.ribbon{left:83%;top:99%;width:3.2%;height:11%;background:linear-gradient(90deg,#7E1313,#B32222 50%,#7E1313);clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%);transform:translateZ(calc(var(--t) * -.5))}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#FFE6A3;box-shadow:0 0 8px 2px rgba(255,205,110,.9);opacity:0;pointer-events:none}
+.scene.is-closed .spark{animation:spark 4.6s ease-in-out infinite}
+@keyframes spark{0%{opacity:0;transform:translateY(0) scale(.4)}25%{opacity:1}100%{opacity:0;transform:translateY(-70px) scale(1.1)}}
+
+/* open book keeps its depth: leather boards under the pages, page blocks along the near edge */
+.oboard,.oedge{position:absolute;opacity:0;transition:opacity .4s .3s;pointer-events:none}
+.book.open .oboard,.book.open .oedge{opacity:1}
+.oboard{left:-1.6%;top:-1.8%;width:103.2%;height:104.4%;border-radius:14px;background:radial-gradient(120% 90% at 30% 15%,#6A3F20 0,#4A2A14 45%,#2B160A 100%);box-shadow:inset 0 0 0 1px #1A0D05,inset 0 0 0 5px rgba(201,154,69,.35);transform:translateZ(calc(var(--to) * -1 - 1px))}
+.oedge{top:100%;height:var(--to);transform-origin:center top;transform:rotateX(-90deg);background:linear-gradient(90deg,rgba(90,60,20,.45),transparent 8%,transparent 92%,rgba(90,60,20,.45)),repeating-linear-gradient(0deg,#EFE0BC 0 1.5px,#C9B285 1.5px 2.5px,#E6D4AA 2.5px 4px,#B79E6E 4px 5px)}
+.oedge.ol{left:.6%;width:49.2%}
+.oedge.or{left:50.2%;width:49.2%}
+.edge.ebt{left:50.8%;top:calc(100% - 7px);width:48.2%;height:var(--t);transform-origin:center top;transform:rotateX(-90deg);background:linear-gradient(90deg,rgba(90,60,20,.4),transparent 10%),repeating-linear-gradient(0deg,#EFE0BC 0 1.5px,#C9B285 1.5px 2.5px,#E6D4AA 2.5px 4px,#B79E6E 4px 5px)}
+.book.open::before{transform:translateZ(calc(var(--to) * -1 - 8px));top:8%;bottom:-9%}
+
+.you-frame{position:absolute;inset:9cqw;border:2px dashed #C99A45;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3cqw;color:#E9C777;box-shadow:inset 0 0 50px rgba(255,200,100,.12)}
+.you-frame b{font:600 44cqw/1 var(--serif);background:linear-gradient(180deg,#FBE7AE,#D9A441);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(255,200,100,.4))}
+.you-frame span{font:600 4.4cqw var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.pg.you{cursor:default}
+.you-btn{margin-top:auto;align-self:flex-start;background:var(--hot);color:#fff;font:700 5cqw var(--sans);text-decoration:none;padding:3.4cqw 7cqw;border-radius:999px;box-shadow:0 2px 0 var(--hot2)}
+/* phone: softer shadow under the open book */
+@media (max-width:700px){.book.open::before{top:30%;bottom:-4%;opacity:.55}}
 /* floating, breathing, glow, ground shadow (closed book only) */
-.scene::before{content:"";position:absolute;left:50%;top:46%;width:min(560px,92%);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,190,70,.85) 0,rgba(255,176,64,.4) 36%,transparent 68%);filter:blur(26px);opacity:0;transition:opacity .6s;pointer-events:none}
-.scene::after{content:"";position:absolute;left:50%;bottom:14px;width:min(420px,70%);height:34px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(20,14,6,.5) 0,rgba(20,14,6,.18) 45%,transparent 72%);filter:blur(7px);opacity:0;transition:opacity .6s;pointer-events:none}
+.scene::before{content:"";position:absolute;left:50%;top:46%;width:min(600px,96%);aspect-ratio:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,190,70,.9) 0,rgba(255,170,60,.42) 36%,transparent 68%);filter:blur(28px);opacity:0;transition:opacity .6s;pointer-events:none}
+.scene::after{content:"";position:absolute;left:50%;bottom:10px;width:min(460px,76%);height:38px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(20,10,2,.6) 0,rgba(20,10,2,.2) 45%,transparent 72%);filter:blur(8px);opacity:0;transition:opacity .6s;pointer-events:none}
 .scene.is-closed::before{opacity:1;animation:glow 5s ease-in-out infinite}
 .scene.is-closed::after{opacity:1;animation:ground 5s ease-in-out infinite}
 .scene.is-closed .floaty{animation:breathe 5s ease-in-out infinite}
+.scene.is-closed{cursor:pointer}
 @keyframes breathe{0%,100%{transform:translateY(0) rotateZ(0) scale(1)}50%{transform:translateY(-12px) rotateZ(-.5deg) scale(1.012)}}
 @keyframes ground{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(.88);opacity:.7}}
 @keyframes glow{0%,100%{opacity:.75}50%{opacity:1}}
@@ -140,9 +170,9 @@ p + p{margin-top:14px}
 @media (min-width:701px){.thumbs{flex-wrap:wrap;justify-content:center}}
 @media (max-width:700px){
   .scene{width:min(400px,100vw - 40px);overflow-x:clip}
-  .book{--t:28px;width:200%;aspect-ratio:4/3.05}
+  .book{--t:52px;--to:20px;width:200%;aspect-ratio:4/3.05}
 }
-@media (prefers-reduced-motion:reduce){.leaf,.book{transition-duration:.01s!important}.scene.is-closed .floaty,.scene.is-closed::before,.scene.is-closed::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.leaf,.book{transition-duration:.01s!important}.scene.is-closed .floaty,.scene.is-closed::before,.scene.is-closed::after,.scene.is-closed .spark,.pg.cover::after{animation:none}}
 
 /* phones */
 .phones{display:flex;justify-content:center;gap:6%;perspective:1500px;padding:30px 0 30px}
@@ -181,7 +211,7 @@ mark{background:linear-gradient(transparent 55%,#FFD98A 55%);color:inherit;paddi
 .bfbox{background:#2A2620;border:1px dashed #F0C672;border-radius:14px;padding:22px 16px}
 .bfbox .tag{display:inline-block;background:#F0C672;color:#1C1A16;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:10px}
 .bfbox h3{color:#fff;font-size:24px}
-.bfbox .amt{color:#F0C672;margin-top:6px}
+.bfbox .amt{color:#F0C672;margin-top:6px;white-space:nowrap;font-size:clamp(48px,17vw,74px)}
 .bfbox .amt small{font:500 22px var(--sans);opacity:.85}
 .count{display:flex;justify-content:center;gap:8px;margin:18px 0 10px}
 .count div{background:#191713;border:1px solid #4A4338;border-radius:10px;min-width:62px;padding:9px 6px}
@@ -304,7 +334,7 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
   <a class="btn" href="#apply">Apply to join</a>
   <div class="cta-sub">10 seats · $2,000 · or $800 each for a group of three until Nov 23</div>
   <div class="faces-row">
-    <div class="stack"><img src="img/ceo-8-figure.jpg" alt=""><img src="img/chrissy.jpg" alt=""><img src="img/kelvin.jpg" alt=""><img src="img/isabella.jpg" alt=""><img src="img/liam.jpg" alt=""></div>
+    <div class="fstack"><img src="img/ceo-8-figure.jpg" alt=""><img src="img/chrissy.jpg" alt=""><img src="img/kelvin.jpg" alt=""><img src="img/isabella.jpg" alt=""><img src="img/liam.jpg" alt=""></div>
     <span>100+ CEOs, founders and companies trained</span>
   </div>
 </section>
@@ -481,54 +511,60 @@ const CLIENTS=[
  {n:'Martin',img:'martin',yt:'xg1R9PJH-uw',role:'Tech sales rep',big:'7 books in 6 weeks',before:'',after:'Read sales books with ease and speed.',q:'That even has led me to have more appointments, get more closes and have even bigger commissions.'}
 ];
 (function(){
-  const book=document.getElementById('book'),scene=document.getElementById('scene'),N=CLIENTS.length;
+  const book=document.getElementById('book'),scene=document.getElementById('scene'),N=CLIENTS.length,M=N+1; // M spreads: every client, then the reader's own page
   const where=document.getElementById('bwhere'),bp=document.getElementById('bprev'),bn=document.getElementById('bnext'),thumbs=document.getElementById('bthumbs');
   const mq=matchMedia('(max-width:700px)');
   let p=0; // 0 = cover, 2k-1 = client k video (left page), 2k = client k stats (right page)
   const h=(t,c,html)=>{const e=document.createElement(t);if(c)e.className=c;if(html!=null)e.innerHTML=html;return e};
-  const stats=(c,i)=>`<div class="st-role">${c.role}</div><div class="st-name">${c.n}</div><div class="st-big">${c.big}</div><div class="st-rows">${c.before?`<div><b>Before</b>${c.before}</div>`:''}<div><b>After</b>${c.after}</div></div><div class="st-q">\u201c${c.q}\u201d</div><div class="st-n"><span>${i+1} of ${N}</span><span>${i<N-1?'Next \u2192':''}</span></div>`;
+  const stats=(c,i)=>`<div class="st-role">${c.role}</div><div class="st-name">${c.n}</div><div class="st-big">${c.big}</div><div class="st-rows">${c.before?`<div><b>Before</b>${c.before}</div>`:''}<div><b>After</b>${c.after}</div></div><div class="st-q">\u201c${c.q}\u201d</div><div class="st-n"><span>${i+1} of ${N}</span><span>Next \u2192</span></div>`;
   const video=c=>`<img class="poster" src="img/${c.img}.jpg" alt="${c.n}" loading="lazy"><div class="vlabel">${c.n}<span>Tap to watch</span></div><button class="play" aria-label="Play ${c.n}\u2019s video"></button>`;
   book.innerHTML=''; thumbs.innerHTML='';
   const leaves=[];
-  for(let i=0;i<=N;i++){
+  const YOU_L='<div class="you-frame"><b>?</b><span>Your video goes here</span></div>';
+  const YOU_R='<div class="in"><div class="st-role">Page '+(N+1)+'</div><div class="st-name">You</div><div class="st-big">Your story is next in this book.</div><div class="st-rows"><div><b>Before</b>Books you bought and didn\u2019t finish.</div><div><b>After</b>1-8 books finished in six weeks, and a reading habit that lasts.</div></div><a class="you-btn" href="#apply">Apply to join \u2192</a><div class="st-n"><span>Starts January 2027</span><span>10 seats</span></div></div>';
+  for(let i=0;i<=M;i++){
     const leaf=h('div','leaf');
-    const front=i===0?h('div','pg front cover','<div class="in"><div class="collage">'+CLIENTS.map(c=>'<img src="img/'+c.img+'.jpg" alt="'+c.n+'">').join('')+'</div><div class="cbot"><div class="ck">'+N+' client stories</div><div class="ct">They <em>finished</em> their books.</div><div class="open">Open the book \u2192</div></div></div>'):h('div','pg front paper','<div class="in">'+stats(CLIENTS[i-1],i-1)+'</div>');
-    front.onclick=()=>go(1);
+    const front=i===0?h('div','pg front cover','<div class="in"><div class="collage">'+CLIENTS.map(c=>'<img src="img/'+c.img+'.jpg" alt="'+c.n+'">').join('')+'</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="cbot"><div class="ck">'+N+' client stories</div><div class="ct">They <em>finished</em> their books.</div><div class="open">Open the book \u2192</div></div></div>'):i===M?h('div','pg front paper you',YOU_R):h('div','pg front paper','<div class="in">'+stats(CLIENTS[i-1],i-1)+'</div>');
+    front.onclick=()=>{if(i>0&&i<M)go(1)};
     leaf.appendChild(front);
     if(i<N){const back=h('div','pg back dark',video(CLIENTS[i]));back.onclick=()=>play(i);leaf.appendChild(back)}
+    else if(i===N){leaf.appendChild(h('div','pg back dark you',YOU_L))}
     book.appendChild(leaf);leaves.push(leaf);
   }
-  ['board','edge er','edge et'].forEach(c=>book.appendChild(h('div',c)));
+  ['board','edge er','edge et','edge ebt','ribbon','oboard','oedge ol','oedge or'].forEach(c=>book.appendChild(h('div',c)));
+  scene.querySelectorAll('.spark').forEach(e=>e.remove());[[30,22,0],[70,16,1.1],[24,62,2.3],[76,55,.6],[50,10,3.1],[64,80,1.8],[36,84,3.6],[82,34,2.7]].forEach(([x,y,d])=>{const sp=h('i','spark');sp.style.left=x+'%';sp.style.top=y+'%';sp.style.animationDelay=d+'s';scene.appendChild(sp)});
   CLIENTS.forEach((c,i)=>{const b=h('button','',`<img src="img/${c.img}.jpg" alt="${c.n}" loading="lazy">`);b.title=c.n;b.onclick=()=>set(mq.matches?2*i+1:2*i+2,true);thumbs.appendChild(b)});
   function stop(){const pl=book.querySelector('.player');if(pl)pl.remove()}
   function play(i){
-    if(Math.ceil(p/2)!==i+1)return; stop();
+    if(i>=N||Math.ceil(p/2)!==i+1)return; stop();
     const c=CLIENTS[i],pl=h('div','player'+(c.land?' land':''));
     pl.innerHTML=c.clip?`<video src="${c.clip}" controls autoplay playsinline></video>`:`<iframe src="https://www.youtube-nocookie.com/embed/${c.yt}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="${c.n}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
-    book.appendChild(pl);
+    book.appendChild(pl);book.style.transform=book.dataset.flat;
   }
   function render(fast){
     stop();
     const turned=Math.ceil(p/2),m=mq.matches;
     book.classList.toggle('fast',!!fast);
     leaves.forEach((l,i)=>{const t=i<turned,was=l.classList.contains('turned');
-      if(t!==was){l.style.zIndex=3000+(t?i:N-i);setTimeout(()=>{l.style.zIndex=l.classList.contains('turned')?i+1:N+1-i},fast?420:920)}
-      else l.style.zIndex=t?i+1:N+1-i;
+      if(t!==was){l.style.zIndex=3000+(t?i:M-i);setTimeout(()=>{l.style.zIndex=l.classList.contains('turned')?i+1:M+1-i},fast?420:920)}
+      else l.style.zIndex=t?i+1:M+1-i;
       l.classList.toggle('turned',t)});
     const closed=turned===0;book.classList.toggle('closed',closed);scene.classList.toggle('is-closed',closed);
-    book.style.transform=closed?(m?'translateX(-50%) rotateY(-24deg) rotateX(5deg) scale(.8)':'translateX(-25%) rotateY(-26deg) rotateX(6deg) scale(.9)'):(m?(p%2?'translateX(0)':'translateX(-50%)'):'translateX(0)');
+    book.classList.toggle('open',!closed);const pan=m?(p%2?'translateX(0)':'translateX(-50%)'):'translateX(0)';book.dataset.flat=pan;
+    book.style.transform=closed?(m?'translateX(-50%) rotateY(-27deg) rotateX(7deg) scale(.74)':'translateX(-25%) rotateY(-30deg) rotateX(8deg) scale(.84)'):pan+(m?' rotateX(11deg) scale(.97)':' rotateX(17deg) scale(.95)');
     const k=turned-1;
-    where.textContent=p===0?N+' client stories':CLIENTS[k].n+' \u00b7 '+(k+1)+' of '+N;
-    bp.disabled=p===0; bn.disabled=p>=2*N;
+    where.textContent=p===0?N+' client stories':k>=N?'Your story is next':CLIENTS[k].n+' \u00b7 '+(k+1)+' of '+N;
+    bp.disabled=p===0; bn.disabled=p>=2*M;
     [...thumbs.children].forEach((b,i)=>b.classList.toggle('on',i===k));
-    if(k>=0&&thumbs.children[k].scrollIntoView&&fast!=='init'){const t=thumbs.children[k];thumbs.scrollTo({left:t.offsetLeft-thumbs.clientWidth/2+25,behavior:'smooth'})}
+    if(k>=0&&k<N&&thumbs.children[k].scrollIntoView&&fast!=='init'){const t=thumbs.children[k];thumbs.scrollTo({left:t.offsetLeft-thumbs.clientWidth/2+25,behavior:'smooth'})}
   }
-  function set(np,fast){p=Math.max(0,Math.min(2*N,np));render(fast&&Math.abs(Math.ceil(np/2)-book.querySelectorAll('.leaf.turned').length)>1)}
+  function set(np,fast){p=Math.max(0,Math.min(2*M,np));render(fast&&Math.abs(Math.ceil(np/2)-book.querySelectorAll('.leaf.turned').length)>1)}
   function go(d){
     if(mq.matches)set(p+d);
     else{const s=Math.ceil(p/2)+d;set(s<=0?0:2*s)}
   }
-  bp.onclick=()=>go(-1); bn.onclick=()=>go(1);
+  scene.addEventListener('click',()=>{if(p===0)set(mq.matches?1:2)});
+  bp.onclick=e=>{e.stopPropagation();go(-1)}; bn.onclick=e=>{e.stopPropagation();go(1)};
   scene.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)}); scene.tabIndex=0;
   let x0=null;scene.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
   scene.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>45)go(dx<0?1:-1)},{passive:true});
