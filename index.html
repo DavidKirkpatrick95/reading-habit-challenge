@@ -180,11 +180,11 @@ p + p{margin-top:14px}
 .phone.p1{transform:rotateY(22deg) rotateX(5deg)}
 .phone.p2{transform:rotateY(-22deg) rotateX(5deg)}
 .phone:hover{transform:rotateY(0) scale(1.03)}
-.ph{display:block;position:relative;aspect-ratio:9/18.6;border-radius:15cqw;background:#1a1a1c;border:2.8cqw solid #0a0a0b;overflow:hidden}
+.ph{display:block;position:relative;aspect-ratio:1170/2532;border-radius:15cqw;background:#1a1a1c;border:2.8cqw solid #0a0a0b;overflow:hidden}
 .p1 .ph{box-shadow:0 0 0 .8cqw #9b978f,-1.2cqw .3cqw 0 .8cqw #7d7a73,-2.4cqw .6cqw 0 .8cqw #5f5c57,-3.6cqw .9cqw 0 .8cqw #45433f,-10cqw 14cqw 16cqw -4cqw rgba(0,0,0,.75)}
 .p2 .ph{box-shadow:0 0 0 .8cqw #9b978f,1.2cqw .3cqw 0 .8cqw #7d7a73,2.4cqw .6cqw 0 .8cqw #5f5c57,3.6cqw .9cqw 0 .8cqw #45433f,10cqw 14cqw 16cqw -4cqw rgba(0,0,0,.75)}
-.ph img{position:absolute;left:0;top:50%;width:100%;transform:translateY(-50%)}
-.ph .isl{position:absolute;z-index:2;top:3.4cqw;left:50%;width:30cqw;height:8.6cqw;margin-left:-15cqw;border-radius:5cqw;background:#000}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph .isl{position:absolute;z-index:2;top:2.6cqw;left:50%;width:28cqw;height:8cqw;margin-left:-14cqw;border-radius:5cqw;background:#000}
 .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 32%);pointer-events:none}
 .taphint{text-align:center;font-size:13.5px;opacity:.65;margin:0 0 14px}
 .lb{position:fixed;inset:0;z-index:100;background:rgba(10,9,8,.93);display:flex;align-items:center;justify-content:center;padding:18px;cursor:zoom-out}
@@ -354,8 +354,8 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
     <div class="kick" style="color:#FF8A5C">I asked Josh: did reading improve the business?</div>
     <h3>Revenue <em>+20%</em>. Profit <em>+400%</em>.</h3>
     <div class="phones">
-      <button class="phone p1" data-zoom="img/real-1.png" aria-label="Read Josh's messages, part 1"><span class="ph"><span class="isl"></span><img src="img/real-1.png" alt="Josh's text messages, part 1"></span></button>
-      <button class="phone p2" data-zoom="img/real-2.png" aria-label="Read Josh's messages, part 2"><span class="ph"><span class="isl"></span><img src="img/real-2.png" alt="Josh's text messages, part 2"></span></button>
+      <button class="phone p1" data-zoom="img/josh-msg-1.jpg" aria-label="Read Josh's messages, part 1"><span class="ph"><span class="isl"></span><img src="img/josh-msg-1.jpg" alt="Josh's text messages, part 1"></span></button>
+      <button class="phone p2" data-zoom="img/josh-msg-2.jpg" aria-label="Read Josh's messages, part 2"><span class="ph"><span class="isl"></span><img src="img/josh-msg-2.jpg" alt="Josh's text messages, part 2"></span></button>
     </div>
     <div class="taphint">Tap a phone to read the messages full size.</div>
     <small>Obviously it wasn't only reading that contributed to their success, but it spearheaded the strategies and innovative ideas for their leadership team.</small>
