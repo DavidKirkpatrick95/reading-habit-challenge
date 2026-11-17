@@ -69,6 +69,61 @@ p + p{margin-top:14px}
 .texts .shots img{border-radius:10px;width:100%}
 .texts small{display:block;font-size:13.5px;line-height:1.5;opacity:.7}
 
+/* flip book */
+.scene{width:min(920px,100vw - 32px);margin-left:50%;transform:translateX(-50%);perspective:2400px;overflow:hidden;padding:6px 0 26px}
+.book{position:relative;width:100%;aspect-ratio:4/3;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.1,.2,1)}
+.leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,.1,.2,1)}
+.book.fast .leaf{transition-duration:.4s}
+.leaf.turned{transform:rotateY(-180deg)}
+.pg{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;container-type:size}
+.pg .in{position:absolute;inset:0;display:flex;flex-direction:column}
+.book::before{content:"";position:absolute;left:1%;right:1%;top:4%;bottom:-3%;background:rgba(28,26,22,.42);filter:blur(16px);border-radius:20px;transform:translateZ(-2px);transition:left .7s}
+.book.closed::before{left:51%}
+.pg.front{border-radius:3px 14px 14px 3px}
+.pg.back{transform:rotateY(180deg);border-radius:14px 3px 3px 14px}
+.pg.paper{background:linear-gradient(90deg,#E4D9C4 0,#FBF8F1 9%,#FBF8F1 100%);cursor:pointer}
+.pg.paper .in{padding:8cqw 7cqw 6cqw 10cqw}
+.pg.dark{background:#12110E}
+.pg.dark::after{content:"";position:absolute;inset:0 0 0 auto;width:9%;background:linear-gradient(270deg,rgba(0,0,0,.55),transparent);pointer-events:none}
+.pg.cover{background:radial-gradient(120% 90% at 20% 10%,#3A2A20 0,#191713 60%);color:#F5EFE3;cursor:pointer;border-left:6px solid #0D0C0A}
+.pg.cover .in{padding:11cqw 9cqw;justify-content:space-between}
+.cover .ck{font:700 3.1cqw var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#FF8A5C}
+.cover .ct{font:600 13cqw/1 var(--serif);letter-spacing:-.02em;margin-top:5cqw}
+.cover .ct em{color:#FF8A5C;font-weight:500}
+.cover .cs{font:500 4.4cqw/1.45 var(--sans);opacity:.8}
+.cover .open{display:inline-block;margin-top:5cqw;font:700 4cqw var(--sans);background:#FF8A5C;color:#191713;border-radius:999px;padding:2.6cqw 5.5cqw}
+.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.play{position:absolute;left:50%;top:50%;width:21cqw;height:21cqw;margin:-10.5cqw 0 0 -10.5cqw;border-radius:50%;border:0;background:rgba(200,64,28,.94);cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.play::before{content:"";position:absolute;left:39%;top:30%;border-style:solid;border-width:4.2cqw 0 4.2cqw 7cqw;border-color:transparent transparent transparent #fff}
+.vlabel{position:absolute;left:0;right:0;bottom:0;padding:16cqw 6cqw 5cqw;background:linear-gradient(transparent,rgba(0,0,0,.82));color:#fff;font:600 4.6cqw/1.3 var(--sans)}
+.vlabel span{display:block;font-weight:400;opacity:.8;font-size:3.6cqw}
+.st-role{font:700 3cqw/1.35 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--hot)}
+.st-name{font:700 13cqw/1 var(--serif);letter-spacing:-.02em;margin-top:2cqw}
+.st-big{font:600 9cqw/1.05 var(--serif);color:var(--hot);margin-top:4cqw;padding-bottom:4cqw;border-bottom:1px solid var(--line);text-wrap:balance}
+.st-rows{margin-top:4cqw;display:grid;gap:3.2cqw}
+.st-rows b{display:block;font:700 2.8cqw var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:.6cqw}
+.st-rows div{font:500 4.5cqw/1.42 var(--sans);color:var(--ink)}
+.st-q{margin-top:auto;font:italic 500 5cqw/1.36 var(--serif);color:var(--ink);padding-top:3cqw}
+.st-n{font:600 2.8cqw var(--sans);color:var(--soft);margin-top:3cqw;display:flex;justify-content:space-between}
+.player{position:absolute;left:0;top:0;width:50%;height:100%;z-index:5000;background:#000;border-radius:14px 3px 3px 14px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.player iframe,.player video{width:100%;height:100%;border:0;background:#000}
+.player.land iframe{height:auto;aspect-ratio:16/9}
+.bookbar{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:2px}
+.bookbar .nav{width:48px;height:48px;border-radius:50%;border:1px solid var(--ink);background:var(--card);font-size:20px;cursor:pointer;color:var(--ink)}
+.bookbar .nav:disabled{opacity:.3;cursor:default}
+.bookbar .where{min-width:11em;text-align:center;font-size:15px;font-weight:600;color:var(--soft)}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding:14px 2px 6px;margin-top:6px;scrollbar-width:none}
+.thumbs::-webkit-scrollbar{display:none}
+.thumbs button{flex:0 0 auto;width:50px;height:50px;border-radius:50%;padding:0;border:2px solid transparent;background:none;cursor:pointer;overflow:hidden;opacity:.6}
+.thumbs button.on{border-color:var(--hot);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:50%}
+@media (min-width:701px){.thumbs{flex-wrap:wrap;justify-content:center}}
+@media (max-width:700px){
+  .scene{width:min(400px,100vw - 40px)}
+  .book{width:200%;aspect-ratio:4/3.05}
+}
+@media (prefers-reduced-motion:reduce){.leaf,.book{transition-duration:.01s!important}}
+
 /* before after */
 .pairs{display:grid;gap:10px}
 .pair{display:grid;grid-template-columns:1fr 26px 1fr;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:16.5px;line-height:1.35}
@@ -184,17 +239,14 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
 
 <section>
   <div class="kick">"Has this worked for people like me?"</div>
-  <h2>Yes. Hear it from them.</h2>
-  <div class="vids">
-    <div class="vid">
-      <video controls preload="none" playsinline poster="clips/josh-poster.jpg" src="clips/josh.mp4"></video>
-      <div class="cap"><div class="big">78 books in 2.5 years</div><div class="who"><b>Josh</b>, CEO of an eight-figure company. Before: a handful of books in his whole life.</div></div>
-    </div>
-    <div class="vid">
-      <video controls preload="none" playsinline poster="clips/chrissy-poster.jpg" src="clips/chrissy.mp4"></video>
-      <div class="cap"><div class="big">12 books in 6 weeks</div><div class="who"><b>Chrissy</b>, left her job to start her own business. She had stopped reading and switched to audiobooks.</div></div>
-    </div>
+  <h2>Yes. Flip through their stories.</h2>
+  <div class="scene" id="scene"><div class="book" id="book"></div></div>
+  <div class="bookbar">
+    <button class="nav" id="bprev" aria-label="Previous page">←</button>
+    <div class="where" id="bwhere">16 client stories</div>
+    <button class="nav" id="bnext" aria-label="Next page">→</button>
   </div>
+  <div class="thumbs" id="bthumbs"></div>
 
   <div class="texts">
     <div class="kick" style="color:#FF8A5C">I asked Josh: did reading improve the business?</div>
@@ -203,17 +255,6 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
     <small>Obviously it wasn't only reading that contributed to their success, but it spearheaded the strategies and innovative ideas for their leadership team.</small>
   </div>
 
-  <div class="grid">
-    <div class="face"><img src="img/kelvin.jpg" alt="Kelvin"><div><b>Kelvin</b>10 books in 6 weeks</div></div>
-    <div class="face"><img src="img/isabella.jpg" alt="Isabella"><div><b>Isabella</b>A book a week. Won a commercial project off one.</div></div>
-    <div class="face"><img src="img/jared.jpg" alt="Jared"><div><b>Jared</b>7 books in 7 weeks</div></div>
-    <div class="face"><img src="img/liam.jpg" alt="Liam"><div><b>Liam</b>12 books in 12 weeks</div></div>
-    <div class="face"><img src="img/romel.jpg" alt="Romel"><div><b>Romel</b>First books since high school</div></div>
-    <div class="face"><img src="img/dima.jpg" alt="Dima"><div><b>Dima</b>200 to 500+ words a minute</div></div>
-    <div class="face"><img src="img/marcos.jpg" alt="Marcos"><div><b>Marcos</b>"Six books in six weeks. I said you're crazy. I did it."</div></div>
-    <div class="face"><img src="img/chase.jpg" alt="Chase"><div><b>Chase</b>7 books in 6 weeks</div></div>
-    <div class="face"><img src="img/tristan.jpg" alt="Tristan"><div><b>Tristan</b>"Changed the revenue in my business"</div></div>
-  </div>
 </section>
 
 <section>
@@ -330,6 +371,80 @@ if(saved){doc.innerHTML=saved;rb.hidden=false}
 eb.onclick=()=>{const on=!document.body.classList.contains('editing');document.body.classList.toggle('editing',on);doc.contentEditable=on;eb.classList.toggle('on',on);eb.textContent=on?'Done editing':'Edit text';
   if(on){doc.querySelectorAll('details').forEach(d=>d.open=true)}else{try{localStorage.setItem(K,doc.innerHTML)}catch(e){};rb.hidden=false}};
 rb.onclick=()=>{try{localStorage.removeItem(K)}catch(e){};location.reload()};
+
+// ---- Flip book of client stories ----
+const CLIENTS=[
+ {n:'Josh',img:'ceo-8-figure',clip:'clips/josh.mp4',role:'CEO of an eight-figure painting company',big:'78 books in 2.5 years',before:'A handful of books in his whole life. He got bored, got sleepy, or zoned out.',after:'28 books in his first 8 months. 197 to 400+ words a minute. He put his whole team through it.',q:'One of the best things I\u2019ve done is hired David to coach my team and myself to read faster and retain more.'},
+ {n:'Chrissy',img:'chrissy',clip:'clips/chrissy.mp4',role:'Left her job to start her own business',big:'12 books in 6 weeks',before:'She had stopped reading and switched to audiobooks.',after:'12 books during the six-week program.',q:'In that six weeks, I ended up reading 12 books. 12 books, which is insane.'},
+ {n:'Jared',img:'jared',yt:'2cCp_zFSESc',role:'Coach and former lawyer',big:'7 books in 7 weeks',before:'About seven books in the previous seven years. He called himself a slow reader.',after:'Learned how to move his eyes across the page. Reads faster and remembers it.',q:'I don\u2019t even think I read seven books in the last seven years, and that\u2019s not an exaggeration.'},
+ {n:'Kelvin',img:'kelvin',yt:'ApNXzsbnXUo',land:1,role:'Founder and lead engineer',big:'10 books in 6 weeks',before:'About a book a month, and he didn\u2019t remember what he read.',after:'Finished a book that had sat on his shelf since 2018, and remembers it.',q:'After joining David\u2019s program the comprehension and retention improved quite significantly.'},
+ {n:'Isabella',img:'isabella',yt:'bMr_k2n39Po',role:'Principal of an interior design firm',big:'A book a week',before:'She felt she didn\u2019t have the attention span to commit to books.',after:'A book-a-week routine, and a new commercial project.',q:'I got this project in large part because I was in David\u2019s reading program.'},
+ {n:'Liam',img:'liam',yt:'wBaKnxkoPV4',land:1,role:'Founder, ten years running businesses',big:'12 books in 12 weeks',before:'About one book every two months. Doom scrolling way too much.',after:'Doubled his reading speed.',q:'I really did not believe I was going to be able to speed read and also retain the information and comprehend what I\u2019m reading.'},
+ {n:'Marcos',img:'marcos',yt:'JkV0EoXHU5E',role:'Entrepreneur',big:'6 books in 6 weeks',before:'He thought reading \u201cdoesn\u2019t get you paid.\u201d',after:'About 15 books since joining. Now a book every two weeks.',q:'His challenge to me was six books in six weeks. I said you\u2019re crazy. I did it.'},
+ {n:'Romel',img:'romel',yt:'Wu4K5oGKPZ4',role:'Entrepreneur, 37',big:'First books since high school',before:'He had not read a book since high school.',after:'Read a stack of books in six weeks, and is still reading.',q:'The wisdom that I learned in these books jumped me forward 10 to 15 years.'},
+ {n:'Dima',img:'dima',yt:'lKJyoheGAa8',role:'Engineer, English is his second language',big:'200 to 500+ words a minute',before:'200 words a minute.',after:'500+ words a minute. Reading became a habit, and he is confident talking with business owners.',q:'I went from reading 200 words per minute to 500, I believe even more.'},
+ {n:'Walid',img:'walid',yt:'OWOCLDIA2iI',role:'Business owner and author',big:'Tripled his reading speed',before:'Almost 200 words a minute.',after:'Almost 600 words a minute. Two books a month, and he uses what he reads.',q:'I went from doing almost 200 words per minute to almost 600 words per minute.'},
+ {n:'Chase',img:'chase',yt:'qwc4oMFIX8g',role:'Tech sales rep and startup founder',big:'7 books in 6 weeks',before:'Already a reader, at about 10 pages a day.',after:'60 to 75 pages a day. A 467-page textbook in one week.',q:'I have 7xed the amount that I am reading just in two weeks\u2019 time.'},
+ {n:'Tristan',img:'tristan',yt:'ontYao4OY44',land:1,role:'Dating coach and creator',big:'\u201cChanged the revenue in my business\u201d',before:'Doing all right in business, and he knew he had more in him.',after:'Speed reading, memory, comprehension and a habit that stuck.',q:'The impact that his coaching has had has changed my life, changed the revenue in my business.'},
+ {n:'Allie',img:'allie',yt:'D_46af1L168',role:'Founder and CEO',big:'A book a week',before:'After 12 years of university she felt resistance to reading.',after:'Reads one book a week.',q:'I\u2019m able to read one book a week and it\u2019s just very light, very easy, very fun.'},
+ {n:'Jonathan',img:'jonathan',yt:'V9FwXSpZIjo',role:'CEO and founder of a tech company',big:'From reading to remembering and using it',before:'He read fast and often, but didn\u2019t retain it or apply it.',after:'Reads with a purpose and applies it to his business.',q:'I was already reading quite fast and quite consistently, but I was missing one key component.'},
+ {n:'A CEO',img:'ceo-7-books',yt:'ntxlty08AXc',role:'CEO of his company',big:'7 books in 6 weeks',before:'',after:'Finished his seventh book in the six weeks.',q:'I just finished a book that I think will revolutionize and change the way we do business.'},
+ {n:'Martin',img:'martin',yt:'xg1R9PJH-uw',role:'Tech sales rep',big:'7 books in 6 weeks',before:'',after:'Read sales books with ease and speed.',q:'That even has led me to have more appointments, get more closes and have even bigger commissions.'}
+];
+(function(){
+  const book=document.getElementById('book'),scene=document.getElementById('scene'),N=CLIENTS.length;
+  const where=document.getElementById('bwhere'),bp=document.getElementById('bprev'),bn=document.getElementById('bnext'),thumbs=document.getElementById('bthumbs');
+  const mq=matchMedia('(max-width:700px)');
+  let p=0; // 0 = cover, 2k-1 = client k video (left page), 2k = client k stats (right page)
+  const h=(t,c,html)=>{const e=document.createElement(t);if(c)e.className=c;if(html!=null)e.innerHTML=html;return e};
+  const stats=(c,i)=>`<div class="st-role">${c.role}</div><div class="st-name">${c.n}</div><div class="st-big">${c.big}</div><div class="st-rows">${c.before?`<div><b>Before</b>${c.before}</div>`:''}<div><b>After</b>${c.after}</div></div><div class="st-q">\u201c${c.q}\u201d</div><div class="st-n"><span>${i+1} of ${N}</span><span>${i<N-1?'Next \u2192':''}</span></div>`;
+  const video=c=>`<img class="poster" src="img/${c.img}.jpg" alt="${c.n}" loading="lazy"><div class="vlabel">${c.n}<span>Tap to watch</span></div><button class="play" aria-label="Play ${c.n}\u2019s video"></button>`;
+  book.innerHTML=''; thumbs.innerHTML='';
+  const leaves=[];
+  for(let i=0;i<=N;i++){
+    const leaf=h('div','leaf');
+    const front=i===0?h('div','pg front cover','<div class="in"><div><div class="ck">Client stories</div><div class="ct">They <em>finished</em> their books.</div></div><div><div class="cs">'+N+' clients. Watch each one, then turn the page for their numbers.</div><div class="open">Open the book \u2192</div></div></div>'):h('div','pg front paper','<div class="in">'+stats(CLIENTS[i-1],i-1)+'</div>');
+    front.onclick=()=>go(1);
+    leaf.appendChild(front);
+    if(i<N){const back=h('div','pg back dark',video(CLIENTS[i]));back.onclick=()=>play(i);leaf.appendChild(back)}
+    book.appendChild(leaf);leaves.push(leaf);
+  }
+  CLIENTS.forEach((c,i)=>{const b=h('button','',`<img src="img/${c.img}.jpg" alt="${c.n}" loading="lazy">`);b.title=c.n;b.onclick=()=>set(mq.matches?2*i+1:2*i+2,true);thumbs.appendChild(b)});
+  function stop(){const pl=book.querySelector('.player');if(pl)pl.remove()}
+  function play(i){
+    if(Math.ceil(p/2)!==i+1)return; stop();
+    const c=CLIENTS[i],pl=h('div','player'+(c.land?' land':''));
+    pl.innerHTML=c.clip?`<video src="${c.clip}" controls autoplay playsinline></video>`:`<iframe src="https://www.youtube-nocookie.com/embed/${c.yt}?autoplay=1&playsinline=1&rel=0&modestbranding=1" title="${c.n}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+    book.appendChild(pl);
+  }
+  function render(fast){
+    stop();
+    const turned=Math.ceil(p/2),m=mq.matches;
+    book.classList.toggle('fast',!!fast);
+    leaves.forEach((l,i)=>{const t=i<turned,was=l.classList.contains('turned');
+      if(t!==was){l.style.zIndex=3000+(t?i:N-i);setTimeout(()=>{l.style.zIndex=l.classList.contains('turned')?i+1:N+1-i},fast?420:920)}
+      else l.style.zIndex=t?i+1:N+1-i;
+      l.classList.toggle('turned',t)});
+    book.classList.toggle('closed',turned===0&&!m);book.style.transform=m?(p%2?'translateX(0)':'translateX(-50%)'):(turned===0?'translateX(-25%)':'translateX(0)');
+    const k=turned-1;
+    where.textContent=p===0?N+' client stories':CLIENTS[k].n+' \u00b7 '+(k+1)+' of '+N;
+    bp.disabled=p===0; bn.disabled=p>=2*N;
+    [...thumbs.children].forEach((b,i)=>b.classList.toggle('on',i===k));
+    if(k>=0&&thumbs.children[k].scrollIntoView&&fast!=='init'){const t=thumbs.children[k];thumbs.scrollTo({left:t.offsetLeft-thumbs.clientWidth/2+25,behavior:'smooth'})}
+  }
+  function set(np,fast){p=Math.max(0,Math.min(2*N,np));render(fast&&Math.abs(Math.ceil(np/2)-book.querySelectorAll('.leaf.turned').length)>1)}
+  function go(d){
+    if(mq.matches)set(p+d);
+    else{const s=Math.ceil(p/2)+d;set(s<=0?0:2*s)}
+  }
+  bp.onclick=()=>go(-1); bn.onclick=()=>go(1);
+  scene.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)}); scene.tabIndex=0;
+  let x0=null;scene.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+  scene.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>45)go(dx<0?1:-1)},{passive:true});
+  mq.addEventListener('change',()=>{if(!mq.matches&&p%2)p++;render(true)});
+  render('init');
+})();
+
 </script>
 </body>
 </html>
