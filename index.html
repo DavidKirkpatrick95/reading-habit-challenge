@@ -769,7 +769,7 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
   <h2>Everything you get</h2>
   <div class="stack">
     <div class="srow"><i>1</i><div><b>Your Reading Plan call</b><span>60 minutes, 1-on-1 with me. We build your book list for your business, your reading plan and your daily page goal.</span></div><em>$400</em></div>
-    <div class="srow"><i>2</i><div><b>12 group office hours on Zoom</b><span>Two a week for six weeks, one hour each. Leave early if you need to.</span>
+    <div class="srow"><i>2</i><div><b>12 group office hours on Zoom</b><span>Two a week for six weeks, one hour each. Attend at least one call a week. Leave early if you need to.</span>
       <div class="call"><div><b>First 20 min</b>Your wins and improvements</div><div><b>Next 20 min</b>Live training: speed, memory, comprehension</div><div><b>Last 20 min</b>Open Q&amp;A</div></div></div><em>$3,000</em></div>
     <div class="srow"><i>3</i><div><b>Phone and text accountability</b><span>From me, your reading coach, for all six weeks.</span></div><em>$1,000</em></div>
     <div class="srow"><i>4</i><div><b>Your follow-up call</b><span>1-on-1 with me after the program, to make sure your habit lasts for the rest of the year.</span></div><em>$400</em></div>
@@ -832,7 +832,7 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
   <details><summary>English isn't my first language. Can I do this?</summary><div class="a">Dima is an engineer and English is his second language. He went from 200 to 500+ words a minute. David will assess whether you are able to benefit from the program on the call after reviewing your application.</div></details>
   <details><summary>Will reading actually help my business?</summary><div class="a">In a survey of 233 wealthy people, 85% said they read two or more self-improvement books a month. Josh's company grew revenue 20% and profit 400% in a year. Reading was not the only cause, but he says it led the strategies and ideas of his leadership team. Isabella won a commercial project off a book she read. Martin read sales books and booked more appointments.</div></details>
   <details><summary>When does it start, and when are the calls?</summary><div class="a">January 2027. There are 10 seats. Once the group is set, we pick the start date and call times that work for all members. Everything is on Zoom. If the seats are gone, the next challenge is in February.</div></details>
-  <details><summary>What is the Read Maxxing app?</summary><div class="a">My reading app. It has games that train your brain to read better. It is not included in the price: it has a 7-day free trial, then costs $39.99 a year. On Android, we have a browser version for you.</div></details>
+  <details><summary>What is the Read Maxxing app?</summary><div class="a">My reading app. It has games that train your brain to read better. It is not included in the price: it has a 7-day free trial, then costs $39.99 a year. It is only on iOS for now, no Android.</div></details>
   <details><summary>Can I bring my team?</summary><div class="a">Yes. Josh put his whole team through the training. Three of you joining together get the Black Friday price.</div></details>
   <details><summary>Can I work with you privately instead?</summary><div class="a">Yes. Private 1-on-1 coaching starts at $5,000 for three months. Say so when you apply.</div></details>
 </section>
@@ -971,20 +971,25 @@ const BOOKS=[["Crucial Conversations",1711809],["Lincoln on Leadership",285557],
   row.innerHTML=[...BOOKS,...BOOKS].map(([t,c])=>'<div class="bk" title="'+t.replace(/"/g,'&quot;')+'"><img draggable="false" loading="lazy" decoding="async" alt="'+t.replace(/"/g,'&quot;')+'" src="'+(typeof c==='string'?'covers/'+c+'.jpg':'https://covers.openlibrary.org/b/id/'+c+'-M.jpg')+'" onerror="this.parentNode.remove()"></div>').join('');
   shelf.appendChild(row);
   // drifts slowly to the right on its own; a click, drag, swipe or scroll takes over, then it resumes
-  let held=false,idleUntil=0,pos=null,last=0,down=null;
+  let held=false,heldAt=0,idleUntil=0,pos=null,last=0,down=null;
   const half=()=>row.scrollWidth/2;
   function frame(t){
-    if(pos===null){pos=half();row.scrollLeft=pos}
-    const dt=Math.min(64,t-(last||t));last=t;
-    if(!held&&t>idleUntil&&!matchMedia('(prefers-reduced-motion:reduce)').matches){if(Math.abs(pos-row.scrollLeft)>2)pos=row.scrollLeft;pos-=dt*0.016;if(pos<=1)pos+=half();row.scrollLeft=pos}
-    else{if(row.scrollLeft<=1)row.scrollLeft+=half();else if(row.scrollLeft>=half()*2-row.clientWidth-1)row.scrollLeft-=half()}
+    try{
+      if(pos===null){pos=half();row.scrollLeft=pos}
+      const dt=Math.min(64,t-(last||t));last=t;
+      if(held&&t-heldAt>6000&&!down)held=false;
+      if(!held&&t>idleUntil&&!matchMedia('(prefers-reduced-motion:reduce)').matches){if(Math.abs(pos-row.scrollLeft)>3)pos=row.scrollLeft;pos-=dt*0.016;if(pos<=1)pos+=half();row.scrollLeft=pos}
+      else{if(row.scrollLeft<=1)row.scrollLeft+=half();else if(row.scrollLeft>=half()*2-row.clientWidth-1)row.scrollLeft-=half()}
+    }catch(e){}
     requestAnimationFrame(frame);
   }
   const pause=()=>{idleUntil=performance.now()+3500};
-  row.addEventListener('pointerdown',e=>{held=true;pause();if(e.pointerType==='mouse'){down={x:e.clientX,s:row.scrollLeft};row.classList.add('grab')}});
+  row.addEventListener('pointerdown',e=>{held=true;heldAt=performance.now();pause();if(e.pointerType==='mouse'){down={x:e.clientX,s:row.scrollLeft};row.classList.add('grab')}});
   addEventListener('pointermove',e=>{if(down){row.scrollLeft=down.s-(e.clientX-down.x)}});
   addEventListener('pointerup',()=>{held=false;down=null;row.classList.remove('grab');pause()});
   addEventListener('pointercancel',()=>{held=false;down=null;pause()});
+  ['mouseup','touchend','touchcancel','blur'].forEach(ev=>addEventListener(ev,()=>{held=false;down=null;row.classList.remove('grab')},{passive:true}));
+  document.addEventListener('visibilitychange',()=>{held=false;down=null;last=0});
   row.addEventListener('wheel',pause,{passive:true});row.addEventListener('touchmove',pause,{passive:true});
   requestAnimationFrame(frame);
 })();
