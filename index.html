@@ -99,8 +99,9 @@ p + p{margin-top:14px}
 .cover .corner.tr{right:3.8cqw;top:3.8cqw;border-left:0;border-bottom:0;border-radius:0 5cqw 0 0}
 .cover .corner.bl{left:4.6cqw;bottom:3.8cqw;border-right:0;border-top:0;border-radius:0 0 0 5cqw}
 .cover .corner.br{right:3.8cqw;bottom:3.8cqw;border-left:0;border-top:0;border-radius:0 0 5cqw 0}
-.collage{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);gap:1.1cqw;padding:7cqw 6.5cqw 0 7.4cqw}
-.collage img{width:100%;height:100%;min-height:0;object-fit:cover;object-position:50% 18%;border-radius:3px;border:1px solid #B88A3C;box-shadow:0 1px 3px rgba(0,0,0,.6);filter:sepia(.28) saturate(.9) brightness(.94)}
+.collage{flex:0 0 auto;height:66.5cqh;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:1.1cqw;padding:7cqw 6.5cqw 0 7.4cqw}
+.collage span{position:relative;display:block;min-width:0;min-height:0;overflow:hidden;border-radius:3px;border:1px solid #B88A3C;box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.collage img{position:absolute;left:0;top:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 18%;filter:sepia(.28) saturate(.9) brightness(.94)}
 .cbot{padding:4cqw 7cqw 8cqw 8cqw;text-align:center}
 .cover .ck{font:700 2.8cqw var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#D8AB55}
 .cover .ct{font:600 9.6cqw/1.02 var(--serif);letter-spacing:-.01em;margin-top:2cqw;background:linear-gradient(180deg,#FBE7AE,#D9A441 55%,#F3D083);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 0 10px rgba(255,200,100,.35))}
@@ -894,7 +895,7 @@ const CLIENTS=[
   const YOU_R='<div class="in"><div class="st-role">Page '+(N+1)+'</div><div class="st-name">You</div><div class="st-big">Your story is next in this book.</div><div class="st-rows"><div><b>Before</b>Books you bought and didn\u2019t finish.</div><div><b>After</b>1-8 books finished in six weeks, and a reading habit that lasts.</div></div><a class="you-btn" href="https://readaccel-sxuoyiiq.manus.space/">Apply to join \u2192</a><div class="st-n"><span>Starts January 2027</span><span>10 seats</span></div></div>';
   for(let i=0;i<=M;i++){
     const leaf=h('div','leaf');
-    const front=i===0?h('div','pg front cover','<div class="in"><div class="collage">'+CLIENTS.map(c=>'<img src="img/'+c.img+'.jpg" alt="'+c.n+'">').join('')+'</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="cbot"><div class="ck">'+N+' client stories</div><div class="ct">They <em>finished</em> their books.</div><div class="open">Open the book \u2192</div></div></div>'):i===M?h('div','pg front paper you',YOU_R):h('div','pg front paper','<div class="in">'+stats(CLIENTS[i-1],i-1)+'</div>');
+    const front=i===0?h('div','pg front cover','<div class="in"><div class="collage">'+CLIENTS.map(c=>'<span><img src="img/'+c.img+'.jpg" alt="'+c.n+'"></span>').join('')+'</div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="cbot"><div class="ck">'+N+' client stories</div><div class="ct">They <em>finished</em> their books.</div><div class="open">Open the book \u2192</div></div></div>'):i===M?h('div','pg front paper you',YOU_R):h('div','pg front paper','<div class="in">'+stats(CLIENTS[i-1],i-1)+'</div>');
     front.onclick=()=>{if(i>0&&i<M)go(1)};
     leaf.appendChild(front);
     if(i<N){const back=h('div','pg back dark',video(CLIENTS[i]));back.onclick=()=>play(i);leaf.appendChild(back)}
