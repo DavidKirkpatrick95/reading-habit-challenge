@@ -227,7 +227,9 @@ mark{background:linear-gradient(transparent 55%,#FFD98A 55%);color:inherit;paddi
 /* shelf of client books */
 .shelf{background:#17130F;padding:9px 0 11px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
 .shelf-cap{text-align:center;font:700 11.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:#D8AB55;margin-bottom:8px}
-.shelf-row{display:flex;gap:7px;width:max-content;animation:shelf 150s linear infinite;will-change:transform}
+.shelf-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch;user-select:none;-webkit-user-select:none}
+.shelf-row::-webkit-scrollbar{display:none}
+.shelf-row.grab{cursor:grabbing}
 .shelf-row + .shelf-row{margin-top:7px}
 .shelf-row.rev{animation-direction:reverse}
 @keyframes shelf{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 3.5px))}}
@@ -327,7 +329,7 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
 </style>
 </head>
 <body>
-<div class="editbar"><button id="edit">Edit text</button><button id="reset" hidden>Undo my edits</button></div>
+<div class="editbar"><button onclick="location.href='mobile.html'">Mobile view</button><button id="edit">Edit text</button><button id="reset" hidden>Undo my edits</button></div>
 
 <a class="topbar" href="#offer" data-bf><b>Black Friday:</b> groups of three pay $800 each, not $2,000. <span data-countdown-text></span></a>
 <div class="shelf" id="shelf" aria-label="Books our clients have read"><div class="shelf-cap">Books my clients have finished</div></div>
@@ -489,6 +491,7 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
 // Edit mode: type straight on the page. Edits are kept in this browser only.
 const doc=document.getElementById('doc'),eb=document.getElementById('edit'),rb=document.getElementById('reset'),K='offer-page-edits-v1';
 const LOCAL=['127.0.0.1','localhost'].includes(location.hostname);
+if(LOCAL&&self!==top)document.querySelector('.editbar').style.display='none';
 if(!LOCAL){document.querySelector('.editbar').remove();document.querySelectorAll('.tbd').forEach(t=>(t.closest('p')||t).remove())}
 let saved=null;try{if(LOCAL)saved=localStorage.getItem(K)}catch(e){}
 if(saved){doc.innerHTML=saved;rb.hidden=false}
@@ -596,17 +599,30 @@ document.querySelectorAll('[data-zoom]').forEach(b=>b.addEventListener('click',(
 })();
 
 // ---- Shelf: every book a client has finished, three slow rows ----
-const BOOKS=[["Crucial Conversations",1711809],["Lincoln on Leadership",285557],["Who Not How",12412300],["Kobe: Life Lessons from a Legend","kobe-life-lessons-from-a-legend"],["The Coaching Habit",12515817],["Unreasonable Hospitality",14553904],["I Hear You",10082732],["The E-Myth Contractor",41596],["Eleven Rings",7865351],["Traction",10678412],["Blue Ocean Strategy",8219313],["Building a StoryBrand",8458703],["Made to Stick",7004880],["Go for No",1699857],["The Culture Code",10242550],["The Dichotomy of Leadership",10184059],["Man's Search for Meaning",11203708],["Tribe of Millionaires",11175098],["Power vs. Force",794199],["How to Win Friends and Influence People",13314878],["Smart Brevity",12499578],["Greenlights",10512439],["The Untethered Soul",10630553],["Getting to Neutral",11192385],["Powerful",10720773],["Exactly What to Say",15092604],["The 6 Types of Working Genius",15221067],["12 Rules for Life",8131760],["Daring Greatly",7367250],["The Daily Climb",null],["Tribal Leadership",5506671],["Emotional Intelligence 2.0",11123603],["Thirty Million Words",13101487],["Don't Believe Everything You Think",15260462],["Organizational Muscle",null],["Do Epic Shit",12550538],["Choose Your Enemies Wisely","choose-your-enemies-wisely"],["The Ideal Team Player",7423184],["That's a Great Question","that-s-a-great-question"],["Atomic Habits",12539702],["Trillion Dollar Coach",8797805],["The Road Less Stupid",10516378],["The Mind of the Leader",8816244],["The Checklist Manifesto",8231866],["How to Create Wealth Investing in Real Estate",10406949],["The Five Dysfunctions of a Team",549590],["They Ask, You Answer",13158050],["Teams","teams"],["Doing the Impossible",9053263],["No Rules Rules",10524294],["The War of Art",288439],["Buy Back Your Time",13239151],["Getting Naked",10864337],["Never Split the Difference",8365942],["Beyond the Hammer",null],["Vivid Vision",11427440],["Positioning",55745],["Leadership and the One Minute Manager",36572],["The Way of the Superior Man",865059],["The Obstacle Is the Way",14428233],["The Let Them Theory",15165806],["The Advantage",9262333],["Outwitting the Devil",8260315],["Elon Musk",14420016],["Branded Not Blanded","branded-not-blanded"],["$100M Offers",11948182],["The Science of Scaling",15253724],["Be Your Future Self Now",13876908],["The Miracle Morning",8539416],["Fetching Millions",null],["The 21 Irrefutable Laws of Leadership",1465659],["The Compound Effect",7115046],["Grit",7438753],["Love & Hate: The Story of Henri Landwirth",null],["The First Minute",11262870],["The Gap and The Gain",11471538],["Stop in the Name of God",null],["The Meaning of Your Life","the-meaning-of-your-life"],["The Three Signs of a Miserable Job",6882863],["Sell or Be Sold",13181453],["The Simplified Day",null],["Breaking the Habit of Being Yourself",11348192],["Growing Pains","growing-pains"],["The 6-Minute X-Ray","the-6-minute-x-ray"],["Measure What Matters",10706481],["The Fish That Ate the Whale",7899730],["Hyperfocus",10239359],["The 48 Laws of Power",6424160],["Moonwalking with Einstein",14426425],["CEO Excellence",12725847],["The Goal",7262320],["Genius at Scale","genius-at-scale"],["10x Is Easier Than 2x",13269048],["Flip the Script","flip-the-script"],["The Power of Positive Thinking",14570194],["The 22 Immutable Laws of Marketing",684190],["The Almanack of Naval Ravikant",10449931],["Slow Productivity",14545976],["The Courage to Be Disliked","the-courage-to-be-disliked"],["What Would the Rockefellers Do?",10546622],["How to Write Funny",8997934],["As a Man Thinketh",6268048],["The Magic of Thinking Big",480539],["Think and Grow Rich",14542536],["Letting Go","letting-go"],["Right Thing, Right Now",14572993],["The Guide to Going Viral",null],["The Body Keeps the Score",8315367]];
+const BOOKS=[["Crucial Conversations",1711809],["Lincoln on Leadership",285557],["Who Not How",12412300],["Kobe: Life Lessons from a Legend","kobe-life-lessons-from-a-legend"],["The Coaching Habit",12515817],["Unreasonable Hospitality",14553904],["I Hear You",10082732],["The E-Myth Contractor",41596],["Eleven Rings",7865351],["Traction",10678412],["Blue Ocean Strategy",8219313],["Building a StoryBrand",8458703],["Made to Stick",7004880],["Go for No",1699857],["The Culture Code",10242550],["The Dichotomy of Leadership",10184059],["Man's Search for Meaning",11203708],["Tribe of Millionaires",11175098],["Power vs. Force",794199],["How to Win Friends and Influence People","how-to-win-friends-and-influence-people"],["Smart Brevity","smart-brevity"],["Greenlights",10512439],["The Untethered Soul",10630553],["Getting to Neutral","getting-to-neutral"],["Powerful",10720773],["Exactly What to Say",15092604],["The 6 Types of Working Genius",15221067],["12 Rules for Life",8131760],["Daring Greatly",7367250],["Tribal Leadership",5506671],["Emotional Intelligence 2.0",11123603],["Thirty Million Words",13101487],["Don't Believe Everything You Think",15260462],["Do Epic Shit",12550538],["Choose Your Enemies Wisely","choose-your-enemies-wisely"],["The Ideal Team Player",7423184],["That's a Great Question","that-s-a-great-question"],["Atomic Habits",12539702],["Trillion Dollar Coach",8797805],["The Road Less Stupid",10516378],["The Mind of the Leader",8816244],["The Checklist Manifesto",8231866],["How to Create Wealth Investing in Real Estate",10406949],["The Five Dysfunctions of a Team",549590],["They Ask, You Answer",13158050],["Teams","teams"],["Doing the Impossible",9053263],["No Rules Rules",10524294],["The War of Art",288439],["Buy Back Your Time",13239151],["Getting Naked",10864337],["Never Split the Difference",8365942],["Vivid Vision",11427440],["Positioning",55745],["Leadership and the One Minute Manager",36572],["The Way of the Superior Man",865059],["The Obstacle Is the Way",14428233],["The Let Them Theory","the-let-them-theory"],["The Advantage",9262333],["Outwitting the Devil",8260315],["Elon Musk",14420016],["Branded Not Blanded","branded-not-blanded"],["$100M Offers",11948182],["The Science of Scaling",15253724],["Be Your Future Self Now",13876908],["The Miracle Morning",8539416],["Fetching Millions","fetching-millions"],["The 21 Irrefutable Laws of Leadership",1465659],["The Compound Effect",7115046],["Grit",7438753],["The First Minute",11262870],["The Gap and The Gain",11471538],["The Meaning of Your Life","the-meaning-of-your-life"],["The Three Signs of a Miserable Job","the-three-signs-of-a-miserable-job"],["Sell or Be Sold",13181453],["Breaking the Habit of Being Yourself",11348192],["Growing Pains","growing-pains"],["The 6-Minute X-Ray","the-6-minute-x-ray"],["Measure What Matters",10706481],["The Fish That Ate the Whale",7899730],["Hyperfocus",10239359],["The 48 Laws of Power",6424160],["Moonwalking with Einstein",14426425],["CEO Excellence",12725847],["The Goal",7262320],["Genius at Scale","genius-at-scale"],["10x Is Easier Than 2x",13269048],["Flip the Script","flip-the-script"],["The Power of Positive Thinking",14570194],["The 22 Immutable Laws of Marketing",684190],["The Almanack of Naval Ravikant",10449931],["Slow Productivity",14545976],["The Courage to Be Disliked","the-courage-to-be-disliked"],["What Would the Rockefellers Do?",10546622],["How to Write Funny",8997934],["As a Man Thinketh",6268048],["The Magic of Thinking Big",480539],["Think and Grow Rich",14542536],["Letting Go","letting-go"],["Right Thing, Right Now",14572993],["The Guide to Going Viral","the-guide-to-going-viral"],["The Body Keeps the Score",8315367]];
 (function(){
   const shelf=document.getElementById('shelf');if(!shelf)return;
   shelf.querySelectorAll('.shelf-row').forEach(r=>r.remove());
-  const per=Math.ceil(BOOKS.length/3);
-  for(let r=0;r<3;r++){
-    const row=document.createElement('div');row.className='shelf-row'+(r===1?'':' rev');
-    const items=BOOKS.slice(r*per,(r+1)*per);
-    row.innerHTML=[...items,...items].map(([t,c])=>'<div class="bk" title="'+t.replace(/"/g,'&quot;')+'">'+t+(c?'<img loading="lazy" decoding="async" alt="" src="'+(typeof c==='string'?'covers/'+c+'.jpg':'https://covers.openlibrary.org/b/id/'+c+'-M.jpg')+'" onerror="this.remove()">':'')+'</div>').join('');
-    shelf.appendChild(row);
+  const row=document.createElement('div');row.className='shelf-row';
+  row.innerHTML=[...BOOKS,...BOOKS].map(([t,c])=>'<div class="bk" title="'+t.replace(/"/g,'&quot;')+'"><img draggable="false" loading="lazy" decoding="async" alt="'+t.replace(/"/g,'&quot;')+'" src="'+(typeof c==='string'?'covers/'+c+'.jpg':'https://covers.openlibrary.org/b/id/'+c+'-M.jpg')+'" onerror="this.parentNode.remove()"></div>').join('');
+  shelf.appendChild(row);
+  // drifts slowly to the right on its own; a click, drag, swipe or scroll takes over, then it resumes
+  let held=false,idleUntil=0,pos=null,last=0,down=null;
+  const half=()=>row.scrollWidth/2;
+  function frame(t){
+    if(pos===null){pos=half();row.scrollLeft=pos}
+    const dt=Math.min(64,t-(last||t));last=t;
+    if(!held&&t>idleUntil&&!matchMedia('(prefers-reduced-motion:reduce)').matches){if(Math.abs(pos-row.scrollLeft)>2)pos=row.scrollLeft;pos-=dt*0.016;if(pos<=1)pos+=half();row.scrollLeft=pos}
+    else{if(row.scrollLeft<=1)row.scrollLeft+=half();else if(row.scrollLeft>=half()*2-row.clientWidth-1)row.scrollLeft-=half()}
+    requestAnimationFrame(frame);
   }
+  const pause=()=>{idleUntil=performance.now()+3500};
+  row.addEventListener('pointerdown',e=>{held=true;pause();if(e.pointerType==='mouse'){down={x:e.clientX,s:row.scrollLeft};row.classList.add('grab')}});
+  addEventListener('pointermove',e=>{if(down){row.scrollLeft=down.s-(e.clientX-down.x)}});
+  addEventListener('pointerup',()=>{held=false;down=null;row.classList.remove('grab');pause()});
+  addEventListener('pointercancel',()=>{held=false;down=null;pause()});
+  row.addEventListener('wheel',pause,{passive:true});row.addEventListener('touchmove',pause,{passive:true});
+  requestAnimationFrame(frame);
 })();
 </script>
 </body>
