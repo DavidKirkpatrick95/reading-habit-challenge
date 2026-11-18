@@ -619,7 +619,9 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
 }
 
 /* Safari keeps photos, canvases and videos visible through a turned page. Hide each side of a leaf outright at the midpoint of its turn. */
-.pg,.pg *{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.pg{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+/* only the leaves of the open spread exist on screen; every other leaf is removed, so no page can show through another */
+.leaf.off{display:none}
 .pg.front{transition:visibility 0s linear .45s}
 .pg.back{visibility:hidden;transition:visibility 0s linear .45s}
 .leaf.turned .pg.front{visibility:hidden}
@@ -913,6 +915,7 @@ const CLIENTS=[
     stop();
     const turned=Math.ceil(p/2),m=mq.matches;
     book.classList.toggle('fast',!!fast);
+    {const pt=book._t==null?turned:book._t,lo=Math.min(pt,turned)-1,hi=Math.max(pt,turned);leaves.forEach((l,i)=>l.classList.toggle('off',i<lo||i>hi));void book.offsetWidth;book._t=turned;clearTimeout(book._offT);book._offT=setTimeout(()=>leaves.forEach((l,i)=>l.classList.toggle('off',i<turned-1||i>turned)),fast?460:960)}
     leaves.forEach((l,i)=>{const t=i<turned,was=l.classList.contains('turned');
       if(t!==was){l.style.zIndex=3000+(t?i:M-i);setTimeout(()=>{l.style.zIndex=l.classList.contains('turned')?i+1:M+1-i},fast?420:920)}
       else l.style.zIndex=t?i+1:M+1-i;
@@ -985,6 +988,6 @@ const BOOKS=[["Crucial Conversations",1711809],["Lincoln on Leadership",285557],
   requestAnimationFrame(frame);
 })();
 </script>
-<script src="book3.js?v=1"></script>
+<script src="book3.js?v=2"></script>
 </body>
 </html>

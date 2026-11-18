@@ -173,6 +173,7 @@ const PAGES = [
     stops.forEach(f=>f());stops=[];
     const turned=Math.ceil(p/2),m=mq.matches;
     book.classList.toggle('fast',!!fast);
+    {const pt=book._t==null?turned:book._t,lo=Math.min(pt,turned)-1,hi=Math.max(pt,turned);leaves.forEach((l,i)=>l.classList.toggle('off',i<lo||i>hi));void book.offsetWidth;book._t=turned;clearTimeout(book._offT);book._offT=setTimeout(()=>leaves.forEach((l,i)=>l.classList.toggle('off',i<turned-1||i>turned)),fast?460:960)}
     leaves.forEach((l,i)=>{const t=i<turned,was=l.classList.contains('turned');
       if(t!==was){l.style.zIndex=3000+(t?i:M-i);setTimeout(()=>{l.style.zIndex=l.classList.contains('turned')?i+1:M+1-i},fast?420:920)}
       else l.style.zIndex=t?i+1:M+1-i;
