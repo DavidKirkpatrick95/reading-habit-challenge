@@ -616,6 +616,14 @@ body.editing main{outline:2px dashed var(--hot);outline-offset:-2px}
   /* the floating apply bar becomes a small pill */
   .sticky{left:50%;right:auto;bottom:18px;transform:translateX(-50%);width:min(620px,92vw);border:1px solid var(--line);border-radius:999px;padding:9px 10px 9px 26px;box-shadow:0 10px 30px -12px rgba(28,26,22,.45)}
 }
+
+/* Safari keeps photos, canvases and videos visible through a turned page. Hide each side of a leaf outright at the midpoint of its turn. */
+.pg,.pg *{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.pg.front{transition:visibility 0s linear .45s}
+.pg.back{visibility:hidden;transition:visibility 0s linear .45s}
+.leaf.turned .pg.front{visibility:hidden}
+.leaf.turned .pg.back{visibility:visible}
+.book.fast .pg.front,.book.fast .pg.back{transition-delay:.2s}
 </style>
 </head>
 <body>
