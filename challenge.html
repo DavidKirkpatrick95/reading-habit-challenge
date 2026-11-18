@@ -339,12 +339,11 @@ const GOING = { url: 'https://vpbckvkdtotmojgwowga.supabase.co', key: 'eyJhbGciO
       '<label>Profile photo <span style="font-weight:500;color:var(--soft)">(please show your face)</span></label><div class="ph"><span id="gpv">'+av(me||{first_name:'?'})+'</span><div><input type="file" id="gfile" accept="image/*" hidden><button type="button" class="pick" id="gpick">'+(me&&me.photo_url?'Change photo':'Choose photo')+'</button></div></div>'+
       (LIVE?'':'<div class="pv"><b>Preview.</b> The list is not connected yet, so this is saved on this device only.</div>')+
       '<div class="msg" id="gmsg" role="alert"></div><button class="btn" id="ggo">'+(editing?'Save':'Add me and continue to Skool')+'</button></form>'+
-      (editing?'<button class="skip" id="grm">Remove me from the list</button>':'<button class="skip" id="gskip">Skip and go to Skool</button>')+
+      (editing?'<button class="skip" id="grm">Remove me from the list</button>':'')+
       '<p class="s" style="margin-top:12px;font-size:13.5px;text-align:center">Your first name, job title and photo will be visible to everyone who opens this page.</p>');
     const f=gb.querySelector('#gfile'),msg=t=>{gb.querySelector('#gmsg').textContent=t};
     gb.querySelector('#gpick').onclick=()=>f.click();
     f.onchange=async()=>{try{photo=await resize(f.files[0]);gb.querySelector('#gpv').innerHTML=av({first_name:'?',photo_url:photo.dataUrl});msg('')}catch(e){msg(e.message)}f.value=''};
-    const sk=gb.querySelector('#gskip');if(sk)sk.onclick=()=>{location.href=SKOOL};
     const rm=gb.querySelector('#grm');if(rm)rm.onclick=async()=>{rm.disabled=true;try{await api.remove();me=null;LS.set('challenge-me',null);close();refresh()}catch(e){rm.disabled=false;msg('That did not work. Check your connection and try again.')}};
     gb.querySelector('#gf').onsubmit=async e=>{e.preventDefault();const go=gb.querySelector('#ggo');if(go.disabled)return;
       const d={first_name:clean(gb.querySelector('#gfn').value,30),job_title:clean(gb.querySelector('#gjt').value,50)};
