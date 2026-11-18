@@ -1,7 +1,7 @@
 // Book 2 prototype: "What we do on the calls". One exercise per page: a visual, what you do, and why it works.
 const PAGES = [
   { t:'The more you time your reading, the better you get.', anim:'measure',
-    p:'Every week you time your reading and write the number down. What gets measured gets better.',
+    p:'On the Zoom calls, David will continually time your reading to measure improvement.',
     s:'Students who time and track their own reading improve more. A review of studies found it works across school grades.', c:'Guzman, Goldberg & Swanson, 2018' },
   { t:'Read groups of words', anim:'groups',
     p:'Slow reading stops on every word. We train your eyes to take three or four words in one look.',
