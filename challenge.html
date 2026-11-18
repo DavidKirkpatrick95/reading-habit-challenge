@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Free 7-Day Reading Challenge · January 1 to 7, 2027</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Start 2027 reading. Seven days, free, with a reading coach and a group. January 1 to 7.">
+<meta property="og:title" content="The Free 7-Day Reading Challenge">
+<meta property="og:description" content="Start 2027 reading. Seven days, free, with a reading coach and a group. January 1 to 7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..800;1,7..72,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F5EFE3;--card:#FBF8F1;--ink:#1C1A16;--soft:#5E574B;--line:#D9CFBC;--hot:#C8401C;--hot2:#A93414;--night:#191713;--gold:#F0C672;--serif:'Literata',Georgia,serif;--sans:'Plus Jakarta Sans',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+.topbar{background:var(--night);color:#F5EFE3;text-align:center;font-size:13px;padding:9px 24px;text-wrap:balance}
+.topbar b{color:var(--gold)}
+section{padding:52px 0}
+section + section{border-top:1px solid var(--line)}
+.kick{font:700 12.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--hot);margin-bottom:12px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+h1{font-size:clamp(38px,9vw,62px);font-weight:700}
+h1 em,h2 em{font-style:italic;color:var(--hot);font-weight:500}
+h2{font-size:clamp(28px,6vw,40px);margin-bottom:20px}
+h3{font-size:21px;line-height:1.2}
+.lead{font-size:20px;color:var(--soft);margin-top:18px;max-width:34em}
+.btn{display:inline-block;background:var(--hot);color:#fff;font:700 17px var(--sans);text-decoration:none;border:0;cursor:pointer;padding:16px 30px;border-radius:999px;box-shadow:0 2px 0 var(--hot2)}
+.btn:hover{background:var(--hot2)}.btn:disabled{opacity:.6}
+.sub{font-size:14px;color:var(--soft);margin-top:12px}
+.hero{padding:44px 0 44px;border:0}
+.hero .btn{margin-top:26px}
+.days{display:grid;gap:12px;counter-reset:d}
+.day{display:grid;grid-template-columns:86px 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.day b{font:700 13px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--hot)}
+.day b span{display:block;font:700 30px/1 var(--serif);letter-spacing:-.02em;color:var(--ink);text-transform:none;margin-top:4px}
+.day p{color:var(--soft);font-size:16.5px;margin-top:3px}
+.need{list-style:none;padding:0;display:grid;gap:10px}
+.need li{padding-left:30px;position:relative}
+.need li::before{content:"\2713";position:absolute;left:0;color:var(--hot);font-weight:700}
+.rec{margin-top:22px;background:var(--card);border:1px dashed var(--ink);border-radius:14px;padding:18px}
+.rec b.tag{display:inline-block;font:700 11.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:99px;padding:3px 10px;margin-bottom:8px}
+.rec p{color:var(--soft);font-size:16.5px;margin-top:6px}
+.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.face{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.face img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 20%}
+.face div{padding:10px 12px 13px;font-size:14px;line-height:1.35;color:var(--soft)}
+.face b{display:block;color:var(--ink);font-size:15px}
+.next{background:var(--night);color:#F5EFE3;border-radius:20px;padding:30px 24px}
+.next h2{color:#fff}.next p{opacity:.85}.next .btn{margin-top:18px;background:var(--gold);color:#191713;box-shadow:0 2px 0 #8A6420}
+form{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:22px;box-shadow:6px 6px 0 var(--ink);display:grid;gap:12px}
+label{font:700 12.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:grid;gap:6px}
+input,select{width:100%;font:500 18px var(--sans);color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;outline:none;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--ink)}
+.phone{display:grid;grid-template-columns:128px 1fr;gap:8px}
+.err{color:var(--hot2);font-weight:600;font-size:15px;min-height:1.3em}
+.fine{font-size:13.5px;color:var(--soft)}
+.confirm{display:none;background:#fff;border:1.5px solid var(--ink);border-radius:12px;padding:14px 16px}
+.confirm b{display:block;font:700 22px var(--serif);margin:2px 0 10px}
+.ghost{background:none;border:0;color:var(--soft);font:600 15px var(--sans);cursor:pointer;margin-left:10px}
+details{border-bottom:1px solid var(--line)}details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:18px 44px 18px 0;font-weight:600;font-size:18px;line-height:1.35;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:12px;font:400 30px var(--serif);color:var(--hot);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details .a{padding:0 0 20px;color:var(--soft);font-size:17px;max-width:36em}
+.tbd{background:#FFE9A8;border-bottom:1px dashed #9A7A00;padding:0 4px;border-radius:3px;font-size:.92em}
+@media (max-width:560px){body{font-size:17px}section{padding:42px 0}.proof{grid-template-columns:1fr 1fr}.day{grid-template-columns:70px 1fr}.phone{grid-template-columns:112px 1fr}}
+
+/* client stories slider */
+.cls{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:4px 20px 6px;scroll-padding:0 20px}
+.cls::-webkit-scrollbar{display:none}
+.cl{flex:0 0 min(300px,78%);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.cl-v{position:relative;display:block;width:100%;aspect-ratio:9/14;border:0;padding:0;background:#000;cursor:pointer}
+.cl-v img,.cl-v iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border:0}
+.cl-v i{position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:rgba(200,64,28,.94);box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.cl-v i::after{content:"";position:absolute;left:25px;top:19px;border-style:solid;border-width:13px 0 13px 21px;border-color:transparent transparent transparent #fff}
+.cl h3{font:700 19px/1.2 var(--serif);padding:14px 16px 0}
+.cl p{font-size:15px;line-height:1.45;color:var(--soft);padding:8px 16px 0}
+.cl blockquote{margin:12px 16px 16px;padding-left:12px;border-left:3px solid var(--hot);font:italic 500 15.5px/1.4 var(--serif)}
+.cl cite{display:block;font:700 13px var(--sans);font-style:normal;color:var(--soft);margin-top:6px}
+.cl cite::before{content:"— "}
+.cl-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:14px}
+.cl-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);background:var(--card);font-size:18px;cursor:pointer;color:var(--ink)}
+.cl-nav button:disabled{opacity:.3;cursor:default}
+.cl-dots{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:220px}
+.cl-dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.cl-dots i.on{background:var(--hot);width:22px;border-radius:99px}
+
+/* who is joining */
+.going{display:flex;align-items:center;gap:12px;margin-top:22px;background:none;border:0;padding:6px 0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+.going .avs{display:flex}
+.av{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:#DCCFB4 center/cover;border:2px solid var(--paper,#F5EFE3);display:inline-flex;align-items:center;justify-content:center;font:700 15px var(--sans);color:#5E574B}
+.going .av + .av{margin-left:-12px}
+.going .av.more{background:var(--ink);color:#fff;font-size:12.5px}
+.going b{font-weight:800}
+.going span.t{font-size:16px;line-height:1.3}
+.going span.t small{display:block;font-size:13.5px;color:var(--soft);text-decoration:underline}
+.gm{position:fixed;inset:0;z-index:40;background:rgba(28,26,22,.58);display:none;align-items:flex-start;justify-content:center;padding:5vh 14px;overflow-y:auto}
+.gm.on{display:flex}
+.gb{position:relative;background:var(--card);border-radius:18px;padding:22px;width:min(440px,100%);font-size:16px}
+.gb h2{font:700 25px/1.15 var(--serif);margin:0 0 4px}
+.gb .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:26px;line-height:1;padding:8px;cursor:pointer;color:var(--ink)}
+.gb p.s{color:var(--soft);font-size:15px;margin:0}
+.gb label{display:block;font-weight:700;font-size:14px;margin-top:14px}
+.gb input[type=text]{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px;background:#fff;margin-top:5px;font:inherit;font-size:16px;color:var(--ink)}
+.gb .ph{display:flex;align-items:center;gap:14px;margin-top:8px}
+.gb .ph .av{width:84px;height:84px;font-size:28px;border-color:var(--line)}
+.gb .pick{background:var(--card);border:1px solid var(--ink);border-radius:999px;padding:9px 16px;font:600 15px var(--sans);cursor:pointer;color:var(--ink)}
+.gb .msg{min-height:22px;font-size:14.5px;font-weight:700;color:#B3261E;margin-top:10px}
+.gb .btn{display:block;width:100%;text-align:center;border:0;cursor:pointer;font-family:inherit;margin-top:6px}
+.gb .btn:disabled{opacity:.6}
+.gb .skip{display:block;margin:14px auto 0;background:none;border:0;color:var(--soft);font:inherit;font-size:14.5px;text-decoration:underline;cursor:pointer}
+.gl{margin-top:12px;max-height:60vh;overflow-y:auto}
+.gl .row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.gl .row:first-child{border-top:0}
+.gl .av{width:48px;height:48px;border-color:var(--line)}
+.gl b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gl span{display:block;font-size:14px;color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gl .ed{background:none;border:0;color:var(--hot);font:700 14px var(--sans);text-decoration:underline;cursor:pointer}
+.pv{background:#FFF3D6;border:1px solid #E5C877;border-radius:10px;padding:8px 12px;font-size:13.5px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="topbar"><b>Free.</b> January 1 to 7, 2027. Join the free Skool group to take part.</div>
+<div class="wrap">
+
+<section class="hero">
+  <div class="kick">The 2027 7-Day Reading Challenge</div>
+  <h1>Start the first 7 days of 2027 by <em>reading daily.</em></h1>
+  <p class="lead">Read every day from January 1 to 7, with a reading coach and a group reading alongside you.</p>
+  <a class="btn" href="https://www.skool.com/reading-performance-lab-9178/about">Join the free challenge</a>
+  <div class="sub">Free · January 1 to 7 · a group and a coach · two optional Zoom calls</div>
+  <button class="going" data-going aria-label="See who is joining"></button>
+</section>
+
+<section>
+  <div class="kick">How it works</div>
+  <h2>Seven days, one group, one coach</h2>
+  <div class="days">
+    <div class="day"><b>Jan<span>1-7</span></b><div><h3>Read every day</h3><p>Post your pages in the Skool group each day and ask me your reading questions there.</p></div></div>
+    <div class="day"><b>Jan<span>1</span></b><div><h3>Kickoff call <span style="font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)">· optional</span></h3><p>30 minutes on Zoom to pick your book and set your page goal.</p></div></div>
+    <div class="day"><b>Jan<span>7</span></b><div><h3>Closing call <span style="font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--soft)">· optional</span></h3><p>30 minutes on Zoom to add up the pages and plan how to keep going.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kick">What you need</div>
+  <h2>A book and 30 minutes a day</h2>
+  <ul class="need">
+    <li>One book you want to finish.</li>
+    <li>30 minutes a day for seven days.</li>
+    <li>A free Skool account, for the group.</li>
+  </ul>
+  <div class="rec">
+    <b class="tag">Recommended, not required</b>
+    <h3>The Read Maxxing app</h3>
+    <p>My reading app, with games that train your brain to read better. 7-day free trial, then $39.99 a year. It is only on iOS for now, no Android.</p>
+  </div>
+</section>
+
+<section>
+  <div class="kick">Who has done this with me</div>
+  <h2>People who started where you are</h2>
+  <div class="cls" id="cls" tabindex="0" aria-label="Client stories. Swipe or use the arrows.">
+    <article class="cl" data-yt="bMr_k2n39Po">
+      <button class="cl-v" aria-label="Play Isabella's video"><img src="img/isabella.jpg" alt="Isabella" loading="lazy"><i></i></button>
+      <h3>Design firm owner: 6 books in 6 weeks → bigger contracts</h3>
+      <p>Reading was the only habit Isabella changed, and it led directly to larger contracts for her design firm.</p>
+      <blockquote>“It&#x27;s crazy to see the impact this had on me and my business.”<cite>Isabella</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="JkV0EoXHU5E">
+      <button class="cl-v" aria-label="Play Marcos's video"><img src="img/marcos.jpg" alt="Marcos" loading="lazy"><i></i></button>
+      <h3>Service business owner: from 0 books to a book every 2 weeks</h3>
+      <p>Marcos had never finished books consistently. Now he reads a book every two weeks and actually enjoys it.</p>
+      <blockquote>“I did six books in six weeks and got in the habit of doing it like crazy.”<cite>Marcos</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="lwp9xC_hvLc">
+      <button class="cl-v" aria-label="Play Josh's video"><img src="img/ceo-8-figure.jpg" alt="Josh" loading="lazy"><i></i></button>
+      <h3>8‑figure CEO: 78 books in 2.5 years after &quot;not a reader&quot;</h3>
+      <p>Josh went from &#x27;I&#x27;m not a reader&#x27; to 78 books in 2.5 years while running an 8‑figure company.</p>
+      <blockquote>“hired David to coach my team and myself.. once I realized the power in learning to read faster and retain more I decided to sign up my whole team.”<cite>Josh</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="4DQ_iQHM8lM">
+      <button class="cl-v" aria-label="Play Chrissy's video"><img src="img/chrissy.jpg" alt="Chrissy" loading="lazy"><i></i></button>
+      <h3>Health coach: 12 books in 6 weeks, no more audiobook crutch</h3>
+      <p>Chrissy stopped relying on audiobooks and started retaining what she read.</p>
+      <blockquote>“The tools to speed‑read and retain the information are the most valuable resource you could have in your life.”<cite>Chrissy</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="2cCp_zFSESc">
+      <button class="cl-v" aria-label="Play Jarred's video"><img src="img/jared.jpg" alt="Jarred" loading="lazy"><i></i></button>
+      <h3>Coach and former lawyer: 7 books in 7 weeks</h3>
+      <p>About seven books in the previous seven years. He called himself a slow reader. Learned how to move his eyes across the page. Reads faster and remembers it.</p>
+      <blockquote>“I don’t even think I read seven books in the last seven years, and that’s not an exaggeration.”<cite>Jarred</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="ApNXzsbnXUo">
+      <button class="cl-v" aria-label="Play Kelvin's video"><img src="img/kelvin.jpg" alt="Kelvin" loading="lazy"><i></i></button>
+      <h3>Founder and lead engineer: 10 books in 6 weeks</h3>
+      <p>About a book a month, and he didn’t remember what he read. Finished a book that had sat on his shelf since 2018, and remembers it.</p>
+      <blockquote>“After joining David’s program the comprehension and retention improved quite significantly.”<cite>Kelvin</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="wBaKnxkoPV4">
+      <button class="cl-v" aria-label="Play Liam's video"><img src="img/liam.jpg" alt="Liam" loading="lazy"><i></i></button>
+      <h3>Founder: 12 books in 12 weeks and double the reading speed</h3>
+      <p>About one book every two months. Doom scrolling way too much. Doubled his reading speed.</p>
+      <blockquote>“I really did not believe I was going to be able to speed read and also retain the information and comprehend what I’m reading.”<cite>Liam</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="Wu4K5oGKPZ4">
+      <button class="cl-v" aria-label="Play Romel's video"><img src="img/romel.jpg" alt="Romel" loading="lazy"><i></i></button>
+      <h3>Entrepreneur, 37: his first books since high school</h3>
+      <p>He had not read a book since high school. Read a stack of books in six weeks, and is still reading.</p>
+      <blockquote>“The wisdom that I learned in these books jumped me forward 10 to 15 years.”<cite>Romel</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="lKJyoheGAa8">
+      <button class="cl-v" aria-label="Play Dima's video"><img src="img/dima.jpg" alt="Dima" loading="lazy"><i></i></button>
+      <h3>Engineer, English is his second language: 200 to 500+ words a minute</h3>
+      <p>200 words a minute. 500+ words a minute. Reading became a habit, and he is confident talking with business owners.</p>
+      <blockquote>“I went from reading 200 words per minute to 500, I believe even more.”<cite>Dima</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="OWOCLDIA2iI">
+      <button class="cl-v" aria-label="Play Aaron's video"><img src="img/walid.jpg" alt="Aaron" loading="lazy"><i></i></button>
+      <h3>Business owner and author: tripled his reading speed</h3>
+      <p>Almost 200 words a minute. Almost 600 words a minute. Two books a month, and he uses what he reads.</p>
+      <blockquote>“I went from doing almost 200 words per minute to almost 600 words per minute.”<cite>Aaron</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="qwc4oMFIX8g">
+      <button class="cl-v" aria-label="Play Chase's video"><img src="img/chase.jpg" alt="Chase" loading="lazy"><i></i></button>
+      <h3>Tech sales rep and startup founder: 7 books in 6 weeks</h3>
+      <p>Already a reader, at about 10 pages a day. 60 to 75 pages a day. A 467-page textbook in one week.</p>
+      <blockquote>“I have 7xed the amount that I am reading just in two weeks’ time.”<cite>Chase</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="ontYao4OY44">
+      <button class="cl-v" aria-label="Play Tristan's video"><img src="img/tristan.jpg" alt="Tristan" loading="lazy"><i></i></button>
+      <h3>Dating coach and creator: a reading habit that stuck</h3>
+      <p>Doing all right in business, and he knew he had more in him. Speed reading, memory, comprehension and a habit that stuck.</p>
+      <blockquote>“The impact that his coaching has had has changed my life, changed the revenue in my business.”<cite>Tristan</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="D_46af1L168">
+      <button class="cl-v" aria-label="Play Allie's video"><img src="img/allie.jpg" alt="Allie" loading="lazy"><i></i></button>
+      <h3>Founder and CEO: a book a week</h3>
+      <p>After 12 years of university she felt resistance to reading. Reads one book a week.</p>
+      <blockquote>“I’m able to read one book a week and it’s just very light, very easy, very fun.”<cite>Allie</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="V9FwXSpZIjo">
+      <button class="cl-v" aria-label="Play Jonathan's video"><img src="img/jonathan.jpg" alt="Jonathan" loading="lazy"><i></i></button>
+      <h3>Tech CEO: from reading fast to remembering and using it</h3>
+      <p>He read fast and often, but didn’t retain it or apply it. Reads with a purpose and applies it to his business.</p>
+      <blockquote>“I was already reading quite fast and quite consistently, but I was missing one key component.”<cite>Jonathan</cite></blockquote>
+    </article>
+    <article class="cl" data-yt="xg1R9PJH-uw">
+      <button class="cl-v" aria-label="Play Martin's video"><img src="img/martin.jpg" alt="Martin" loading="lazy"><i></i></button>
+      <h3>Tech sales rep: 7 books in 6 weeks</h3>
+      <p>Read sales books with ease and speed.</p>
+      <blockquote>“That even has led me to have more appointments, get more closes and have even bigger commissions.”<cite>Martin</cite></blockquote>
+    </article>
+  </div>
+  <div class="cl-nav"><button id="clp" aria-label="Previous client">←</button><div class="cl-dots" id="cld"></div><button id="cln" aria-label="Next client">→</button></div>
+  <p class="sub" style="margin-top:16px">These are results from my six-week program, not from a seven-day challenge.</p>
+</section>
+
+<section id="join">
+  <div class="kick">Join</div>
+  <h2>Join the free Skool group</h2>
+  <p class="lead" style="margin:0 0 20px">The challenge runs inside my free Skool group, The Read Maxxing Society. The call times and each day's post are there.</p>
+  <a class="btn" href="https://www.skool.com/reading-performance-lab-9178/about">Join the free challenge</a>
+  <p class="fine" style="margin-top:18px">Free to join. Skool will ask you to make a free account.</p>
+  <button class="going" data-going aria-label="See who is joining"></button>
+</section>
+
+<section>
+  <div class="next">
+    <div class="kick" style="color:var(--gold)">After the seven days</div>
+    <h2>Want it to last all year?</h2>
+    <p>My six-week Reading Habit Challenge is how you keep going: a reading plan built for you, a small group, and a coach who texts you.</p>
+    <a class="btn" href="index.html">See the six-week program</a>
+  </div>
+</section>
+
+<section>
+  <div class="kick">Questions</div>
+  <h2>Before you join</h2>
+  <details><summary>Is it really free?</summary><div class="a">Yes. The seven days, the group and both optional calls are free.</div></details>
+  <details><summary>Do I need the app?</summary><div class="a">No. You need a book and 30 minutes a day. I recommend the Read Maxxing app because the games make reading easier.</div></details>
+  <details><summary>What book should I read?</summary><div class="a">One you already own and want to finish.</div></details>
+  <details><summary>What time are the calls?</summary><div class="a">The two Zoom calls are optional. The times will be set closer to the start date and announced in the free Skool group. Each call is 30 minutes.</div></details>
+  <details><summary>What if I miss a day?</summary><div class="a">Post your pages the next day and keep going.</div></details>
+  <details><summary>Who is running this?</summary><div class="a">David Kirkpatrick, davidreadsfast. I went from 10 pages an hour to about 65, read 300 books in about three years, and have trained 100+ CEOs, founders and companies.</div></details>
+</section>
+
+</div>
+<div class="gm" id="gm"><div class="gb" id="gb" role="dialog" aria-modal="true"></div></div>
+<script>
+// ---- Who is joining: a public list of first name, job title and photo. People add themselves before going to Skool. ----
+// The Supabase project and its public (anon) key. This key is meant to be public; the database rules decide what it may do.
+const GOING = { url: 'https://vpbckvkdtotmojgwowga.supabase.co', key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwYmNrdmtkdG90bW9qZ3dvd2dhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUwMzA3MjQsImV4cCI6MjExMDYwNjcyNH0.oiPFS8xN1etT6gsOk0scJH77RVvEu5s6sya2ehxLr4U' };
+(function(){
+  const SKOOL='https://www.skool.com/reading-performance-lab-9178/about', LIVE=!!(GOING.url&&GOING.key), Q=new URLSearchParams(location.search);
+  const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const LS={get(k){try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},set(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+  const gm=document.getElementById('gm'),gb=document.getElementById('gb');let list=[],me=LS.get('challenge-me'),loaded=false,lastFocus=null;
+  const clean=(v,n)=>String(v||'').replace(/\s+/g,' ').trim().slice(0,n);
+  const av=(p,extra)=>{const u=p&&p.photo_url,ok=u&&/^(https:\/\/|data:image\/)/.test(u);return '<span class="av '+(extra||'')+'"'+(ok?' style="background-image:url(&quot;'+esc(u).replace(/[()]/g,'')+'&quot;)"':'')+'>'+(ok?'':esc(((p&&p.first_name)||'?').charAt(0).toUpperCase()))+'</span>'};
+  const H=()=>({apikey:GOING.key,Authorization:'Bearer '+GOING.key});
+  const api={
+    async load(){ if(!LIVE){const mine=me?[me]:[];return Q.has('demo')?mine.concat(SAMPLE):mine}
+      const r=await fetch(GOING.url+'/rest/v1/attendees?select=id,first_name,job_title,photo_url&order=created_at.desc&limit=1000',{headers:H()});if(!r.ok)throw new Error('load');return r.json()},
+    async save(d,photo){ if(!LIVE){const row={id:(me&&me.id)||'me',token:'local',first_name:d.first_name,job_title:d.job_title,photo_url:photo?photo.dataUrl:(me&&me.photo_url)||null};return row}
+      let url=(me&&me.photo_url)||null;
+      if(photo){const name=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2))+'.jpg';const up=await fetch(GOING.url+'/storage/v1/object/attendees/'+name,{method:'POST',headers:Object.assign({'Content-Type':'image/jpeg'},H()),body:photo.blob});if(!up.ok)throw new Error('photo');url=GOING.url+'/storage/v1/object/public/attendees/'+name}
+      const r=await fetch(GOING.url+'/rest/v1/rpc/join_challenge',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H()),body:JSON.stringify({p_id:me?me.id:null,p_token:me?me.token:null,p_first_name:d.first_name,p_job_title:d.job_title,p_photo_url:url})});
+      if(!r.ok)throw new Error('save');const j=await r.json(),o=Array.isArray(j)?j[0]:j;return {id:o.id,token:o.token,first_name:d.first_name,job_title:d.job_title,photo_url:url}},
+    async remove(){ if(!LIVE||!me)return;const r=await fetch(GOING.url+'/rest/v1/rpc/leave_challenge',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H()),body:JSON.stringify({p_id:me.id,p_token:me.token})});if(!r.ok)throw new Error('remove')}
+  };
+  const SAMPLE=['Maya|Founder','Jordan|Sales manager','Priya|Product designer','Luis|Contractor','Hannah|Nurse','Theo|Software engineer','Aisha|Real estate agent','Ben|Student','Carla|Marketing lead','Owen|Attorney','Nina|Teacher','Sam|CEO','Ravi|Analyst','Zoe|Writer','Marco|Chef','Ella|Recruiter','Dev|Trader','Kim|Coach','Tom|Electrician','Ivy|Pharmacist','Noah|Pastor','Lena|Architect','Cole|Firefighter'].map((x,i)=>({id:'s'+i,first_name:x.split('|')[0],job_title:x.split('|')[1]+' (sample)',photo_url:null}));
+  function paint(){
+    const n=list.length,show=list.slice(0,5);
+    document.querySelectorAll('[data-going]').forEach(el=>{
+      el.innerHTML=n?'<span class="avs">'+show.map(p=>av(p)).join('')+(n>5?'<span class="av more">+'+(n-5)+'</span>':'')+'</span><span class="t"><b>'+n.toLocaleString('en-US')+'</b> '+(n===1?'person is':'people are')+' joining<small>See who is joining</small></span>'
+        :'<span class="avs">'+av({first_name:'+'})+'</span><span class="t">'+(loaded?'<b>Be the first on the list.</b><small>Add your name and photo</small>':'Loading who is joining…')+'</span>'});
+  }
+  async function refresh(){try{list=await api.load();if(me&&LIVE&&!list.some(p=>p.id===me.id)){/* removed by the admin or expired */}loaded=true}catch(e){loaded=true}paint()}
+  function open(html){lastFocus=document.activeElement;gb.innerHTML='<button class="x" aria-label="Close">×</button>'+html;gm.classList.add('on');const f=gb.querySelector('input[type=text],.btn');if(f)f.focus()}
+  function close(){gm.classList.remove('on');gb.innerHTML='';if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  gm.addEventListener('mousedown',e=>{if(e.target===gm)close()});gb.addEventListener('click',e=>{if(e.target.classList.contains('x'))close()});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&gm.classList.contains('on'))close()});
+  function resize(file){return new Promise((res,rej)=>{if(!file||!/^image\//.test(file.type))return rej(new Error('Choose a photo.'));if(file.size>25e6)return rej(new Error('That photo is too big. Choose a smaller one.'));
+    const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{const s=Math.min(img.naturalWidth,img.naturalHeight),c=document.createElement('canvas');c.width=c.height=320;c.getContext('2d').drawImage(img,(img.naturalWidth-s)/2,(img.naturalHeight-s)/2,s,s,0,0,320,320);URL.revokeObjectURL(url);
+      c.toBlob(b=>b?res({blob:b,dataUrl:c.toDataURL('image/jpeg',.82)}):rej(new Error('Could not read that photo. Try another one.')),'image/jpeg',.82)};
+    img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('Could not read that photo. Try another one.'))};img.src=url})}
+  function form(){
+    const editing=!!me;let photo=null;
+    open('<h2>'+(editing?'Edit your details':'Add yourself to the list')+'</h2><p class="s">'+(editing?'This is how you appear on the list.':'Everyone joining can see who else is in. Then you go to Skool to join.')+'</p>'+
+      '<form id="gf" novalidate><label for="gfn">First name</label><input id="gfn" type="text" maxlength="30" autocomplete="given-name" value="'+esc(me?me.first_name:'')+'">'+
+      '<label for="gjt">Job title</label><input id="gjt" type="text" maxlength="50" autocomplete="organization-title" placeholder="e.g. Founder, Nurse, Student" value="'+esc(me?me.job_title:'')+'">'+
+      '<label>Profile photo <span style="font-weight:500;color:var(--soft)">(please show your face)</span></label><div class="ph"><span id="gpv">'+av(me||{first_name:'?'})+'</span><div><input type="file" id="gfile" accept="image/*" hidden><button type="button" class="pick" id="gpick">'+(me&&me.photo_url?'Change photo':'Choose photo')+'</button></div></div>'+
+      (LIVE?'':'<div class="pv"><b>Preview.</b> The list is not connected yet, so this is saved on this device only.</div>')+
+      '<div class="msg" id="gmsg" role="alert"></div><button class="btn" id="ggo">'+(editing?'Save':'Add me and continue to Skool')+'</button></form>'+
+      (editing?'<button class="skip" id="grm">Remove me from the list</button>':'<button class="skip" id="gskip">Skip and go to Skool</button>')+
+      '<p class="s" style="margin-top:12px;font-size:13.5px;text-align:center">Your first name, job title and photo will be visible to everyone who opens this page.</p>');
+    const f=gb.querySelector('#gfile'),msg=t=>{gb.querySelector('#gmsg').textContent=t};
+    gb.querySelector('#gpick').onclick=()=>f.click();
+    f.onchange=async()=>{try{photo=await resize(f.files[0]);gb.querySelector('#gpv').innerHTML=av({first_name:'?',photo_url:photo.dataUrl});msg('')}catch(e){msg(e.message)}f.value=''};
+    const sk=gb.querySelector('#gskip');if(sk)sk.onclick=()=>{location.href=SKOOL};
+    const rm=gb.querySelector('#grm');if(rm)rm.onclick=async()=>{rm.disabled=true;try{await api.remove();me=null;LS.set('challenge-me',null);close();refresh()}catch(e){rm.disabled=false;msg('That did not work. Check your connection and try again.')}};
+    gb.querySelector('#gf').onsubmit=async e=>{e.preventDefault();const go=gb.querySelector('#ggo');if(go.disabled)return;
+      const d={first_name:clean(gb.querySelector('#gfn').value,30),job_title:clean(gb.querySelector('#gjt').value,50)};
+      if(!d.first_name)return msg('Add your first name.');if(!d.job_title)return msg('Add your job title.');if(!photo&&!(me&&me.photo_url))return msg('Add a photo that shows your face.');
+      go.disabled=true;go.textContent='Saving…';
+      try{me=await api.save(d,photo);LS.set('challenge-me',me);await refresh();
+        if(editing){close();who()}else{gb.innerHTML='<button class="x" aria-label="Close">×</button><h2>You\'re on the list, '+esc(me.first_name)+'.</h2><p class="s">Last step: join the free Skool group. That is where the challenge happens.</p><div style="margin-top:16px"><a class="btn" href="'+SKOOL+'">Continue to Skool</a></div>';const a=gb.querySelector('a');a.focus();if(!Q.has('stay'))setTimeout(()=>{location.href=SKOOL},1600)}}
+      catch(err){go.disabled=false;go.textContent=editing?'Save':'Add me and continue to Skool';msg(err.message==='photo'?'Your photo did not upload. Try a different photo.':'That did not save. Check your connection and try again.')}};
+  }
+  function who(){
+    const n=list.length;
+    open('<h2>'+(n?n.toLocaleString('en-US')+(n===1?' person is':' people are')+' joining':'Nobody is on the list yet')+'</h2><p class="s">The free 7-day reading challenge, January 1 to 7.</p>'+
+      '<div class="gl">'+list.map(p=>'<div class="row">'+av(p)+'<div><b>'+esc(p.first_name)+(me&&p.id===me.id?' (you)':'')+'</b><span>'+esc(p.job_title)+'</span></div>'+(me&&p.id===me.id?'<button class="ed" id="ged">Edit</button>':'<i></i>')+'</div>').join('')+'</div>'+
+      (me?'<a class="btn" style="margin-top:16px" href="'+SKOOL+'">Go to the Skool group</a>':'<button class="btn" id="gadd" style="margin-top:16px">Join the free challenge</button>'));
+    const ed=gb.querySelector('#ged');if(ed)ed.onclick=form;const ad=gb.querySelector('#gadd');if(ad)ad.onclick=form;
+  }
+  document.querySelectorAll('[data-going]').forEach(el=>el.addEventListener('click',()=>{list.length?who():form()}));
+  // the Join buttons: first the short form, then Skool. People already on the list go straight to Skool.
+  document.querySelectorAll('a.btn[href="'+SKOOL+'"]').forEach(a=>a.addEventListener('click',e=>{if(me)return;e.preventDefault();form()}));
+  paint();refresh();
+})();
+</script>
+<script>
+// client stories: swipe, arrows and dots; one video plays at a time
+(function(){
+  const box=document.getElementById('cls');if(!box)return;const cards=[...box.children],dots=document.getElementById('cld'),prev=document.getElementById('clp'),next=document.getElementById('cln');
+  dots.innerHTML=cards.map(()=>'<i></i>').join('');
+  const cur=()=>{let best=0,d=1e9;cards.forEach((c,i)=>{const x=Math.abs(c.offsetLeft-box.offsetLeft-box.scrollLeft-20);if(x<d){d=x;best=i}});return box.scrollLeft>=box.scrollWidth-box.clientWidth-4?Math.max(best,cards.length-Math.max(1,Math.round(box.clientWidth/cards[0].offsetWidth))):best};
+  const sync=()=>{const i=cur(),end=box.scrollLeft>=box.scrollWidth-box.clientWidth-4;[...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));prev.disabled=box.scrollLeft<=4;next.disabled=end};
+  const go=d=>{const i=Math.max(0,Math.min(cards.length-1,cur()+d));box.scrollTo({left:cards[i].offsetLeft-box.offsetLeft-20,behavior:'smooth'})};
+  prev.onclick=()=>go(-1);next.onclick=()=>go(1);box.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});addEventListener('resize',sync);
+  box.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1)});
+  function stop(){box.querySelectorAll('.cl-v iframe').forEach(f=>{const v=f.parentNode;f.remove();v.querySelectorAll('img,i').forEach(x=>x.style.display='')})}
+  cards.forEach(c=>{const v=c.querySelector('.cl-v');v.onclick=()=>{if(v.querySelector('iframe'))return;stop();v.querySelectorAll('img,i').forEach(x=>x.style.display='none');
+    const f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+c.dataset.yt+'?autoplay=1&playsinline=1&rel=0&modestbranding=1';f.title=c.querySelector('cite').textContent+' video';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;v.appendChild(f)}});
+  sync();
+})();
+</script>
+</body>
+</html>
