@@ -1,27 +1,33 @@
-// Book 2 prototype: "What we do on the calls". One exercise per page: a visual, what you do, and why it works.
+// Book 3 prototype (ten exercises, new page design). Book 2 prototype: "What we do on the calls". One exercise per page: a visual, what you do, and why it works.
 const PAGES = [
-  { t:'The more you time your reading, the better you get.', anim:'measure',
+  { part:0, t:'The 10 out of 10 book list', anim:'drive',
+    p:'Motivation boosts comprehension and memory. Your coach helps you find books you are 10 out of 10 excited to read, listens to what is holding you back, and coaches you through it.',
+    s:'People remember more of what they are curious about, even a day later. Curiosity switches on the brain\u2019s reward and memory centres together.', c:'Gruber, Gelman & Ranganath, Neuron, 2014' },
+  { part:0, t:'You need more volume.', anim:'volume',
+    p:'Reading is trained like a muscle, and every page is a rep. Thirty minutes a day for six weeks is about 300,000 words. We raise your page goal as you get stronger.',
+    s:'Adults who learned to read grew more white matter, the brain\u2019s cabling, between the areas that reading uses.', c:'Carreiras and colleagues, Nature, 2009' },
+  { part:1, t:'The more you time your reading, the better you get.', anim:'measure',
     p:'On the Zoom calls, David will continually time your reading to measure improvement.',
     s:'Students who time and track their own reading improve more. A review of studies found it works across school grades.', c:'Guzman, Goldberg & Swanson, 2018' },
-  { t:'Read groups of words', anim:'groups',
+  { part:1, t:'Read groups of words', anim:'groups',
     p:'Slow reading stops on every word. We train your eyes to take three or four words in one look.',
     s:'Fast readers take in more letters with each look than slow readers do.', c:'Rayner, Slattery & Bélanger, 2010' },
-  { t:'Use the games in the app.', anim:'fade',
+  { part:1, t:'Use the games in the app.', anim:'fade',
     p:'This one is Escape from Alexandria, in the Read Maxxing app. The words burn away behind you as you read, so your eyes keep moving forward.',
     s:'Adults trained on text that disappears as they read got faster and understood more. The same training without the time pressure did nothing.', c:'Breznitz and colleagues, Nature Communications, 2013' },
-  { t:'Stop sounding words out loud.', anim:'noread',
+  { part:1, t:'Stop sounding words out loud.', anim:'noread',
     p:'You will practice the \u201cNo Reading Reading\u201d exercise. For two minutes you pass your eyes over a page without sounding anything out. Then you read again and let the words go straight in.',
     s:'You cannot look at a word and not read it. Psychologists have measured this since 1935.', c:'Stroop, 1935' },
-  { t:'2-1-2-1', anim:'2121',
+  { part:1, t:'2-1-2-1', anim:'2121',
     p:'Read for two minutes and mark the spot. Read the same passage in one minute. Do it again. Six minutes a day.',
     s:'Across studies, re-reading the same passage against the clock improved both fluency and comprehension.', c:'Therrien, 2004' },
-  { t:'The memory palace', anim:'palace',
+  { part:2, t:'The memory palace', anim:'palace',
     p:'The technique from Moonwalking with Einstein. You place each idea from your book in a room you know, then walk through it.',
     s:'People with ordinary memories more than doubled the words they could recall after six weeks of this training.', c:'Dresler and colleagues, Neuron, 2017' },
-  { t:'Active recall', anim:'recall',
+  { part:2, t:'Active recall', anim:'recall',
     p:'On the call you close the book and tell the group what it taught you, in 60 seconds. Saying it from memory is the exercise.',
     s:'Testing yourself beats re-reading for what you still remember a week later.', c:'Roediger & Karpicke, 2006' },
-  { t:'Spaced repetition', anim:'curve',
+  { part:2, t:'Spaced repetition', anim:'curve',
     p:'Twice a week you get on a call and talk about your books. Every conversation is a review, spaced out for you.',
     s:'Without review, most of what you read fades within days. Each review brings it back and slows the fade.', c:'Ebbinghaus, 1885' },
 ];
@@ -33,7 +39,12 @@ const PAGES = [
   let p=0,stops=[];
   const h=(t,c,html)=>{const e=document.createElement(t);if(c)e.className=c;if(html!=null)e.innerHTML=html;return e};
 
+  const PARTS=[['Foundation','#C8401C'],['Speed','#1D5AA6'],['Memory','#2E7D6B']];
+  const OUT0=[[.13,.60],[.07,.47],[.10,.31],[.20,.17],[.35,.08],[.52,.05],[.69,.08],[.82,.17],[.91,.30],[.94,.45],[.90,.57],[.84,.65],[.82,.73],[.74,.80],[.63,.78],[.59,.73],[.57,.83],[.56,.96],[.48,.96],[.47,.83],[.45,.72],[.38,.74],[.28,.75],[.20,.70]];
+  const brainD=(()=>{const P=OUT0.map(([x,y])=>[+(x*96).toFixed(1),+(y*80).toFixed(1)]),m=(a,b)=>[(a[0]+b[0])/2,(a[1]+b[1])/2];let s=m(P[P.length-1],P[0]),d='M'+s;for(let i=0;i<P.length;i++){const e=m(P[i],P[(i+1)%P.length]);d+='Q'+P[i]+' '+e}return d+'Z'})();
   const ANIM={
+    drive:'<div class="anim a-drive"><div class="bks"><div class="bk3 b4"><div class="cv"><i></i></div><b>4<small>/10</small></b><span>\u201cI should read this\u201d</span></div><div class="bk3 b6"><div class="cv"><i></i></div><b>6<small>/10</small></b><span>\u201cIt\u2019s a bestseller\u201d</span></div><div class="bk3 b10"><div class="cv"><i></i></div><b>10<small>/10</small></b><span>\u201cI can\u2019t wait to open it\u201d</span></div></div><div class="cap">The fill shows how much of the book stays with you.</div></div>',
+    volume:'<div class="anim a-vol"><svg viewBox="0 0 96 80"><path class="br" d="'+brainD+'"/><path class="cab" d="M79 36 C66 13 40 12 26 33"/><path class="pulse" d="M79 36 C66 13 40 12 26 33"/><circle class="nd" cx="79" cy="36" r="3"/><circle class="nd" cx="26" cy="33" r="3"/><text x="80" y="47" text-anchor="middle">sees words</text><text x="25" y="44" text-anchor="middle">knows words</text></svg><div class="reps"><span data-wk>Week 1</span><b data-w>0</b><em>words read</em></div></div>',
     measure:'<div class="anim a-3d" data-3d="reader"><div class="clock" data-clock>0:00</div></div>',
     groups:'<div class="anim a-groups"><div class="lbl"><span>One word at a time</span><b data-c1>0 stops</b></div><div class="ln" data-l1></div><hr><div class="lbl"><span>Groups of words</span><b data-c2>0 stops</b></div><div class="ln g" data-l2></div></div>',
     fade:'<div class="anim a-fade vid"><video muted loop playsinline preload="metadata" poster="img/fading-text-poster.jpg" src="clips/fading-text.mp4"></video></div>',
@@ -48,6 +59,9 @@ const PAGES = [
 
   // animations that need a timer: each returns a function that stops it
   const START={
+    volume(el){const w=el.querySelector('[data-w]'),wk=el.querySelector('[data-wk]');let raf,t0=null;
+      function fr(t){if(t0===null)t0=t+700;const c=((t-t0)%8000)/6000,k=Math.max(0,Math.min(1,c));w.textContent=Math.round(k*315000/1000)*1000>0?(Math.round(k*315)*1000).toLocaleString('en-US'):'0';wk.textContent='Week '+Math.min(6,Math.floor(k*6)+1);raf=requestAnimationFrame(fr)}
+      raf=requestAnimationFrame(fr);return()=>cancelAnimationFrame(raf)},
     measure(el){const c=el.querySelector('[data-clock]');let sec=0;c.textContent='0:00';const iv=setInterval(()=>{sec=(sec+1)%600;c.textContent=Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')},110);const stop3=scene3(el.querySelector('[data-3d]'),'reader');return()=>{clearInterval(iv);stop3()}},
     recall(el){return scene3(el.querySelector('[data-3d]'),'talk')},
     groups(el){const words='The right book list is half of a reading habit that lasts.'.split(' ');const l1=el.querySelector('[data-l1]'),l2=el.querySelector('[data-l2]'),c1=el.querySelector('[data-c1]'),c2=el.querySelector('[data-c2]');
@@ -135,14 +149,15 @@ const PAGES = [
     return()=>{cancelAnimationFrame(raf);R.dispose();R.forceContextLoss&&R.forceContextLoss();R.domElement.remove()};
   }
 
-  const pageHTML=(x,i)=>'<div class="in"><div class="ex-k">Exercise '+(i+1)+'</div><div class="ex-t">'+x.t+'</div>'+ANIM[x.anim]+'<p class="ex-p">'+x.p+'</p><div class="ex-s"><b>'+(x.sk||'Why it works')+'</b>'+x.s+(x.c?'<small>'+x.c+'</small>':'')+'</div><div class="st-n"><span>'+(i+1)+' of '+NP+'</span><span>'+(i%2?'Next →':'')+'</span></div></div>';
+  const dots=i=>'<span class="dots">'+PAGES.map((x,j)=>'<i'+(j===i?' class="on"':'')+' style="--dc:'+PARTS[x.part][1]+'"></i>').join('')+'</span>';
+  const pageHTML=(x,i)=>'<div class="in" style="--pc:'+PARTS[x.part][1]+'"><div class="ex-num">'+String(i+1).padStart(2,'0')+'</div><div class="ex-k"><i>'+PARTS[x.part][0]+'</i>Exercise '+(i+1)+'</div><div class="ex-t">'+x.t+'</div>'+ANIM[x.anim]+'<p class="ex-p">'+x.p+'</p><div class="ex-s"><b>'+(x.sk||'Why it works')+'</b>'+x.s+(x.c?' <small>'+x.c+'</small>':'')+'</div><div class="st-n">'+dots(i)+'<span>'+(i%2?'Next \u2192':'')+'</span></div></div>';
   const YOU_L='<div class="you-frame"><b>?</b><span>What is stopping you?</span></div>';
   const YOU_R='<div class="in"><div class="st-role">Your first call</div><div class="st-name">You</div><div class="st-big">We find what is stopping you, and build your plan around it.</div><div class="st-rows"><div><b>Call one</b>60 minutes, 1-on-1. Your book list, your reading plan, your daily page goal.</div></div><a class="you-btn" href="https://readaccel-sxuoyiiq.manus.space/">Apply to join →</a><div class="st-n"><span>Starts January 2027</span><span>10 seats</span></div></div>';
 
   const leaves=[];
   for(let i=0;i<=M;i++){
     const leaf=h('div','leaf');
-    const front=i===0?h('div','pg front cover','<div class="in"><div class="brainbox"><canvas id="brain"></canvas></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="cbot"><div class="ck">How reading coaching works</div><div class="ct">What we <em>do</em> on the calls.</div><div class="cs2">Eight exercises, and why each one works.</div><div class="open">Open the book →</div></div></div>')
+    const front=i===0?h('div','pg front cover','<div class="in"><div class="brainbox"><canvas id="brain"></canvas></div><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div class="cbot"><div class="ck">How reading coaching works</div><div class="ct">What we <em>do</em> on the calls.</div><div class="cs2">Ten exercises, and why each one works.</div><div class="open">Open the book →</div></div></div>')
       :i===M?h('div','pg front paper you',YOU_R):h('div','pg front paper ex',pageHTML(PAGES[2*i-1],2*i-1));
     front.dataset.pg=i===0||i===M?'':2*i-1;
     front.onclick=()=>{if(i>0&&i<M)go(1)};
@@ -172,8 +187,10 @@ const PAGES = [
     if(k>=0&&k<N){const want=m?[p%2?2*k:2*k+1]:[2*k,2*k+1];
       setTimeout(()=>{if(Math.ceil(p/2)-1!==k)return;want.forEach(ix=>{const el=book.querySelector('.pg[data-pg="'+ix+'"]');if(!el)return;el.classList.add('live');const st=START[PAGES[ix].anim];if(st)stops.push(st(el))})},fast?450:700)}
     if(!closed)need3();
+    if(bd)[...bd.children].forEach((b,i)=>b.classList.toggle('on',!closed&&k<N&&(m?i===(p%2?2*k:2*k+1):Math.floor(i/2)===k)));
     brainOn(closed);
   }
+  const bd=document.getElementById('bdots2');if(bd){bd.innerHTML=PAGES.map((x,i)=>'<button aria-label="Exercise '+(i+1)+'" style="--dc:'+PARTS[x.part][1]+'">'+(i+1)+'</button>').join('');[...bd.children].forEach((b,i)=>b.onclick=e=>{e.stopPropagation();set(mq.matches?i+1:2*(Math.floor(i/2)+1))})}
   function set(np,fast){p=Math.max(0,Math.min(2*M,np));render(fast)}
   function go(d){if(mq.matches)set(p+d);else{const s=Math.ceil(p/2)+d;set(s<=0?0:2*s)}}
   scene.addEventListener('click',()=>{if(p===0)set(mq.matches?1:2)});
